@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+
+message TransmissionProcessedPayload {
+  string booking_note_id = 1;
+  bool is_success = 2;
+  string external_system_id = 3;
+  string external_system_uri = 4;
+  repeated string errors = 5;
+}

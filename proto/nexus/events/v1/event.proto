@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+
+// Event is the generic envelope that wraps all specific event payloads.
+message Event {
+
+  string id = 1;
+  string name = 2;
+  string emitted_at = 3;
+  string version = 4;
+  // ID issued by the initial source of the message
+  string correlation_id = 5;
+  // ID issued at the creation of the entity
+  string entity_id = 6;
+
+  // The actual event data, packed into an Any type. The `type_url` within
+  // Any will identify the specific payload message type.
+  google.protobuf.Any payload = 7;
+}
