@@ -123,7 +123,7 @@ func (x BookingCreationFailedPayload_FailureReason) Number() protoreflect.EnumNu
 
 // Deprecated: Use BookingCreationFailedPayload_FailureReason.Descriptor instead.
 func (BookingCreationFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{4, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5, 0}
 }
 
 type BookingProcessingFailedPayload_FailureReason int32
@@ -184,7 +184,7 @@ func (x BookingProcessingFailedPayload_FailureReason) Number() protoreflect.Enum
 
 // Deprecated: Use BookingProcessingFailedPayload_FailureReason.Descriptor instead.
 func (BookingProcessingFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{6, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7, 0}
 }
 
 type BookingUpdateFailedPayload_FailureReason int32
@@ -227,7 +227,115 @@ func (x BookingUpdateFailedPayload_FailureReason) Number() protoreflect.EnumNumb
 
 // Deprecated: Use BookingUpdateFailedPayload_FailureReason.Descriptor instead.
 func (BookingUpdateFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{10, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11, 0}
+}
+
+type BookingNoteReference struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Id                  string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	BookingNoteId       string                 `protobuf:"bytes,2,opt,name=booking_note_id,json=bookingNoteId,proto3" json:"booking_note_id,omitempty"`
+	ReferenceTemplateId string                 `protobuf:"bytes,3,opt,name=reference_template_id,json=referenceTemplateId,proto3" json:"reference_template_id,omitempty"`
+	Value               string                 `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
+	Label               string                 `protobuf:"bytes,5,opt,name=label,proto3" json:"label,omitempty"`
+	Mandatory           bool                   `protobuf:"varint,6,opt,name=mandatory,proto3" json:"mandatory,omitempty"`
+	CreatedAt           string                 `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt           string                 `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt           string                 `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *BookingNoteReference) Reset() {
+	*x = BookingNoteReference{}
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BookingNoteReference) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BookingNoteReference) ProtoMessage() {}
+
+func (x *BookingNoteReference) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BookingNoteReference.ProtoReflect.Descriptor instead.
+func (*BookingNoteReference) Descriptor() ([]byte, []int) {
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *BookingNoteReference) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetBookingNoteId() string {
+	if x != nil {
+		return x.BookingNoteId
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetReferenceTemplateId() string {
+	if x != nil {
+		return x.ReferenceTemplateId
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetMandatory() bool {
+	if x != nil {
+		return x.Mandatory
+	}
+	return false
+}
+
+func (x *BookingNoteReference) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
+func (x *BookingNoteReference) GetDeletedAt() string {
+	if x != nil {
+		return x.DeletedAt
+	}
+	return ""
 }
 
 type BookingNoteContainer struct {
@@ -246,7 +354,7 @@ type BookingNoteContainer struct {
 
 func (x *BookingNoteContainer) Reset() {
 	*x = BookingNoteContainer{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[0]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -258,7 +366,7 @@ func (x *BookingNoteContainer) String() string {
 func (*BookingNoteContainer) ProtoMessage() {}
 
 func (x *BookingNoteContainer) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[0]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -271,7 +379,7 @@ func (x *BookingNoteContainer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingNoteContainer.ProtoReflect.Descriptor instead.
 func (*BookingNoteContainer) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *BookingNoteContainer) GetId() string {
@@ -354,7 +462,7 @@ type BookingParticipant struct {
 
 func (x *BookingParticipant) Reset() {
 	*x = BookingParticipant{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[1]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -366,7 +474,7 @@ func (x *BookingParticipant) String() string {
 func (*BookingParticipant) ProtoMessage() {}
 
 func (x *BookingParticipant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[1]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -379,7 +487,7 @@ func (x *BookingParticipant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingParticipant.ProtoReflect.Descriptor instead.
 func (*BookingParticipant) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{1}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BookingParticipant) GetId() string {
@@ -522,7 +630,7 @@ type BookingNoteItem struct {
 
 func (x *BookingNoteItem) Reset() {
 	*x = BookingNoteItem{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[2]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -534,7 +642,7 @@ func (x *BookingNoteItem) String() string {
 func (*BookingNoteItem) ProtoMessage() {}
 
 func (x *BookingNoteItem) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[2]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -547,7 +655,7 @@ func (x *BookingNoteItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingNoteItem.ProtoReflect.Descriptor instead.
 func (*BookingNoteItem) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{2}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *BookingNoteItem) GetId() string {
@@ -733,13 +841,14 @@ type BookingNote struct {
 	Participants                 []*BookingParticipant   `protobuf:"bytes,39,rep,name=Participants,proto3" json:"Participants,omitempty"`
 	RequestedDcdDate             string                  `protobuf:"bytes,40,opt,name=requested_dcd_date,json=requestedDcdDate,proto3" json:"requested_dcd_date,omitempty"`
 	LatestShippingDate           string                  `protobuf:"bytes,41,opt,name=latest_shipping_date,json=latestShippingDate,proto3" json:"latest_shipping_date,omitempty"`
+	References                   []*BookingNoteReference `protobuf:"bytes,42,rep,name=References,proto3" json:"References,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
 
 func (x *BookingNote) Reset() {
 	*x = BookingNote{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[3]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -751,7 +860,7 @@ func (x *BookingNote) String() string {
 func (*BookingNote) ProtoMessage() {}
 
 func (x *BookingNote) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[3]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +873,7 @@ func (x *BookingNote) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingNote.ProtoReflect.Descriptor instead.
 func (*BookingNote) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{3}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *BookingNote) GetId() string {
@@ -1054,6 +1163,13 @@ func (x *BookingNote) GetLatestShippingDate() string {
 	return ""
 }
 
+func (x *BookingNote) GetReferences() []*BookingNoteReference {
+	if x != nil {
+		return x.References
+	}
+	return nil
+}
+
 type BookingCreationFailedPayload struct {
 	state         protoimpl.MessageState                     `protogen:"open.v1"`
 	BookingId     string                                     `protobuf:"bytes,1,opt,name=booking_id,json=bookingId,proto3" json:"booking_id,omitempty"`
@@ -1066,7 +1182,7 @@ type BookingCreationFailedPayload struct {
 
 func (x *BookingCreationFailedPayload) Reset() {
 	*x = BookingCreationFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1078,7 +1194,7 @@ func (x *BookingCreationFailedPayload) String() string {
 func (*BookingCreationFailedPayload) ProtoMessage() {}
 
 func (x *BookingCreationFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1091,7 +1207,7 @@ func (x *BookingCreationFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingCreationFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingCreationFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{4}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *BookingCreationFailedPayload) GetBookingId() string {
@@ -1133,7 +1249,7 @@ type BookingCreatedPayload struct {
 
 func (x *BookingCreatedPayload) Reset() {
 	*x = BookingCreatedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1145,7 +1261,7 @@ func (x *BookingCreatedPayload) String() string {
 func (*BookingCreatedPayload) ProtoMessage() {}
 
 func (x *BookingCreatedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1158,7 +1274,7 @@ func (x *BookingCreatedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingCreatedPayload.ProtoReflect.Descriptor instead.
 func (*BookingCreatedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *BookingCreatedPayload) GetBookingId() string {
@@ -1194,7 +1310,7 @@ type BookingProcessingFailedPayload struct {
 
 func (x *BookingProcessingFailedPayload) Reset() {
 	*x = BookingProcessingFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1206,7 +1322,7 @@ func (x *BookingProcessingFailedPayload) String() string {
 func (*BookingProcessingFailedPayload) ProtoMessage() {}
 
 func (x *BookingProcessingFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1219,7 +1335,7 @@ func (x *BookingProcessingFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingProcessingFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingProcessingFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{6}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BookingProcessingFailedPayload) GetBookingId() string {
@@ -1261,7 +1377,7 @@ type BookingProcessedPayload struct {
 
 func (x *BookingProcessedPayload) Reset() {
 	*x = BookingProcessedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1273,7 +1389,7 @@ func (x *BookingProcessedPayload) String() string {
 func (*BookingProcessedPayload) ProtoMessage() {}
 
 func (x *BookingProcessedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1286,7 +1402,7 @@ func (x *BookingProcessedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingProcessedPayload.ProtoReflect.Descriptor instead.
 func (*BookingProcessedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BookingProcessedPayload) GetBookingId() string {
@@ -1323,7 +1439,7 @@ type BookingFieldAmendedPayload struct {
 
 func (x *BookingFieldAmendedPayload) Reset() {
 	*x = BookingFieldAmendedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1335,7 +1451,7 @@ func (x *BookingFieldAmendedPayload) String() string {
 func (*BookingFieldAmendedPayload) ProtoMessage() {}
 
 func (x *BookingFieldAmendedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1348,7 +1464,7 @@ func (x *BookingFieldAmendedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingFieldAmendedPayload.ProtoReflect.Descriptor instead.
 func (*BookingFieldAmendedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{8}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BookingFieldAmendedPayload) GetBookingId() string {
@@ -1387,8 +1503,9 @@ func (x *BookingFieldAmendedPayload) GetNewValue() string {
 }
 
 // *
-// BookingUpdatedPayload contains the two booking datasets before and after update, created by the PUT endpoint.
-// For more granular information look for events of the type BookingFieldAmended
+// BookingUpdatedPayload contains the two booking datasets before and after
+// update, created by the PUT endpoint. For more granular information look for
+// events of the type BookingFieldAmended
 type BookingUpdatedPayload struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BookingId     string                 `protobuf:"bytes,1,opt,name=booking_id,json=bookingId,proto3" json:"booking_id,omitempty"`
@@ -1401,7 +1518,7 @@ type BookingUpdatedPayload struct {
 
 func (x *BookingUpdatedPayload) Reset() {
 	*x = BookingUpdatedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1413,7 +1530,7 @@ func (x *BookingUpdatedPayload) String() string {
 func (*BookingUpdatedPayload) ProtoMessage() {}
 
 func (x *BookingUpdatedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1426,7 +1543,7 @@ func (x *BookingUpdatedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingUpdatedPayload.ProtoReflect.Descriptor instead.
 func (*BookingUpdatedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{9}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BookingUpdatedPayload) GetBookingId() string {
@@ -1468,7 +1585,7 @@ type BookingUpdateFailedPayload struct {
 
 func (x *BookingUpdateFailedPayload) Reset() {
 	*x = BookingUpdateFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1480,7 +1597,7 @@ func (x *BookingUpdateFailedPayload) String() string {
 func (*BookingUpdateFailedPayload) ProtoMessage() {}
 
 func (x *BookingUpdateFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1493,7 +1610,7 @@ func (x *BookingUpdateFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingUpdateFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingUpdateFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{10}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *BookingUpdateFailedPayload) GetBookingId() string {
@@ -1527,7 +1644,7 @@ type BookingApprovedPayload struct {
 
 func (x *BookingApprovedPayload) Reset() {
 	*x = BookingApprovedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1539,7 +1656,7 @@ func (x *BookingApprovedPayload) String() string {
 func (*BookingApprovedPayload) ProtoMessage() {}
 
 func (x *BookingApprovedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1552,7 +1669,7 @@ func (x *BookingApprovedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingApprovedPayload.ProtoReflect.Descriptor instead.
 func (*BookingApprovedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *BookingApprovedPayload) GetBookingId() string {
@@ -1579,7 +1696,7 @@ type BookingRejectedPayload struct {
 
 func (x *BookingRejectedPayload) Reset() {
 	*x = BookingRejectedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1591,7 +1708,7 @@ func (x *BookingRejectedPayload) String() string {
 func (*BookingRejectedPayload) ProtoMessage() {}
 
 func (x *BookingRejectedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1604,7 +1721,7 @@ func (x *BookingRejectedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingRejectedPayload.ProtoReflect.Descriptor instead.
 func (*BookingRejectedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{12}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *BookingRejectedPayload) GetBookingId() string {
@@ -1631,7 +1748,7 @@ type BookingForwardPayload struct {
 
 func (x *BookingForwardPayload) Reset() {
 	*x = BookingForwardPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1643,7 +1760,7 @@ func (x *BookingForwardPayload) String() string {
 func (*BookingForwardPayload) ProtoMessage() {}
 
 func (x *BookingForwardPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1656,7 +1773,7 @@ func (x *BookingForwardPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingForwardPayload.ProtoReflect.Descriptor instead.
 func (*BookingForwardPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{13}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *BookingForwardPayload) GetBookingNote() *BookingNote {
@@ -1677,7 +1794,20 @@ var File_proto_nexus_events_v1_booking_proto protoreflect.FileDescriptor
 
 const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
-	"#proto/nexus/events/v1/booking.proto\x12\x0fnexus.events.v1\x1a\"proto/nexus/events/v1/common.proto\x1a\x1cgoogle/protobuf/struct.proto\"\x8f\x02\n" +
+	"#proto/nexus/events/v1/booking.proto\x12\x0fnexus.events.v1\x1a\"proto/nexus/events/v1/common.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xa9\x02\n" +
+	"\x14BookingNoteReference\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
+	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x122\n" +
+	"\x15reference_template_id\x18\x03 \x01(\tR\x13referenceTemplateId\x12\x14\n" +
+	"\x05value\x18\x04 \x01(\tR\x05value\x12\x14\n" +
+	"\x05label\x18\x05 \x01(\tR\x05label\x12\x1c\n" +
+	"\tmandatory\x18\x06 \x01(\bR\tmandatory\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\a \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\tR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"deleted_at\x18\t \x01(\tR\tdeletedAt\"\x8f\x02\n" +
 	"\x14BookingNoteContainer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12%\n" +
@@ -1738,7 +1868,7 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x13 \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"deleted_at\x18\x14 \x01(\tR\tdeletedAt\"\xa8\r\n" +
+	"deleted_at\x18\x14 \x01(\tR\tdeletedAt\"\xef\r\n" +
 	"\vBookingNote\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12#\n" +
@@ -1789,7 +1919,10 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"Containers\x12G\n" +
 	"\fParticipants\x18' \x03(\v2#.nexus.events.v1.BookingParticipantR\fParticipants\x12,\n" +
 	"\x12requested_dcd_date\x18( \x01(\tR\x10requestedDcdDate\x120\n" +
-	"\x14latest_shipping_date\x18) \x01(\tR\x12latestShippingDate\"\x82\x03\n" +
+	"\x14latest_shipping_date\x18) \x01(\tR\x12latestShippingDate\x12E\n" +
+	"\n" +
+	"References\x18* \x03(\v2%.nexus.events.v1.BookingNoteReferenceR\n" +
+	"References\"\x82\x03\n" +
 	"\x1cBookingCreationFailedPayload\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\tR\tbookingId\x126\n" +
@@ -1879,54 +2012,56 @@ func file_proto_nexus_events_v1_booking_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_nexus_events_v1_booking_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_proto_nexus_events_v1_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_proto_nexus_events_v1_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_proto_nexus_events_v1_booking_proto_goTypes = []any{
 	(BookingSource)(0), // 0: nexus.events.v1.BookingSource
 	(BookingCreationFailedPayload_FailureReason)(0),   // 1: nexus.events.v1.BookingCreationFailedPayload.FailureReason
 	(BookingProcessingFailedPayload_FailureReason)(0), // 2: nexus.events.v1.BookingProcessingFailedPayload.FailureReason
 	(BookingUpdateFailedPayload_FailureReason)(0),     // 3: nexus.events.v1.BookingUpdateFailedPayload.FailureReason
-	(*BookingNoteContainer)(nil),                      // 4: nexus.events.v1.BookingNoteContainer
-	(*BookingParticipant)(nil),                        // 5: nexus.events.v1.BookingParticipant
-	(*BookingNoteItem)(nil),                           // 6: nexus.events.v1.BookingNoteItem
-	(*BookingNote)(nil),                               // 7: nexus.events.v1.BookingNote
-	(*BookingCreationFailedPayload)(nil),              // 8: nexus.events.v1.BookingCreationFailedPayload
-	(*BookingCreatedPayload)(nil),                     // 9: nexus.events.v1.BookingCreatedPayload
-	(*BookingProcessingFailedPayload)(nil),            // 10: nexus.events.v1.BookingProcessingFailedPayload
-	(*BookingProcessedPayload)(nil),                   // 11: nexus.events.v1.BookingProcessedPayload
-	(*BookingFieldAmendedPayload)(nil),                // 12: nexus.events.v1.BookingFieldAmendedPayload
-	(*BookingUpdatedPayload)(nil),                     // 13: nexus.events.v1.BookingUpdatedPayload
-	(*BookingUpdateFailedPayload)(nil),                // 14: nexus.events.v1.BookingUpdateFailedPayload
-	(*BookingApprovedPayload)(nil),                    // 15: nexus.events.v1.BookingApprovedPayload
-	(*BookingRejectedPayload)(nil),                    // 16: nexus.events.v1.BookingRejectedPayload
-	(*BookingForwardPayload)(nil),                     // 17: nexus.events.v1.BookingForwardPayload
-	(*UserInfo)(nil),                                  // 18: nexus.events.v1.UserInfo
-	(*structpb.Value)(nil),                            // 19: google.protobuf.Value
+	(*BookingNoteReference)(nil),                      // 4: nexus.events.v1.BookingNoteReference
+	(*BookingNoteContainer)(nil),                      // 5: nexus.events.v1.BookingNoteContainer
+	(*BookingParticipant)(nil),                        // 6: nexus.events.v1.BookingParticipant
+	(*BookingNoteItem)(nil),                           // 7: nexus.events.v1.BookingNoteItem
+	(*BookingNote)(nil),                               // 8: nexus.events.v1.BookingNote
+	(*BookingCreationFailedPayload)(nil),              // 9: nexus.events.v1.BookingCreationFailedPayload
+	(*BookingCreatedPayload)(nil),                     // 10: nexus.events.v1.BookingCreatedPayload
+	(*BookingProcessingFailedPayload)(nil),            // 11: nexus.events.v1.BookingProcessingFailedPayload
+	(*BookingProcessedPayload)(nil),                   // 12: nexus.events.v1.BookingProcessedPayload
+	(*BookingFieldAmendedPayload)(nil),                // 13: nexus.events.v1.BookingFieldAmendedPayload
+	(*BookingUpdatedPayload)(nil),                     // 14: nexus.events.v1.BookingUpdatedPayload
+	(*BookingUpdateFailedPayload)(nil),                // 15: nexus.events.v1.BookingUpdateFailedPayload
+	(*BookingApprovedPayload)(nil),                    // 16: nexus.events.v1.BookingApprovedPayload
+	(*BookingRejectedPayload)(nil),                    // 17: nexus.events.v1.BookingRejectedPayload
+	(*BookingForwardPayload)(nil),                     // 18: nexus.events.v1.BookingForwardPayload
+	(*UserInfo)(nil),                                  // 19: nexus.events.v1.UserInfo
+	(*structpb.Value)(nil),                            // 20: google.protobuf.Value
 }
 var file_proto_nexus_events_v1_booking_proto_depIdxs = []int32{
-	6,  // 0: nexus.events.v1.BookingNote.Items:type_name -> nexus.events.v1.BookingNoteItem
-	4,  // 1: nexus.events.v1.BookingNote.Containers:type_name -> nexus.events.v1.BookingNoteContainer
-	5,  // 2: nexus.events.v1.BookingNote.Participants:type_name -> nexus.events.v1.BookingParticipant
-	0,  // 3: nexus.events.v1.BookingCreationFailedPayload.source:type_name -> nexus.events.v1.BookingSource
-	1,  // 4: nexus.events.v1.BookingCreationFailedPayload.reason:type_name -> nexus.events.v1.BookingCreationFailedPayload.FailureReason
-	0,  // 5: nexus.events.v1.BookingCreatedPayload.source:type_name -> nexus.events.v1.BookingSource
-	0,  // 6: nexus.events.v1.BookingProcessingFailedPayload.source:type_name -> nexus.events.v1.BookingSource
-	2,  // 7: nexus.events.v1.BookingProcessingFailedPayload.reason:type_name -> nexus.events.v1.BookingProcessingFailedPayload.FailureReason
-	0,  // 8: nexus.events.v1.BookingProcessedPayload.source:type_name -> nexus.events.v1.BookingSource
-	18, // 9: nexus.events.v1.BookingFieldAmendedPayload.user:type_name -> nexus.events.v1.UserInfo
-	18, // 10: nexus.events.v1.BookingUpdatedPayload.user:type_name -> nexus.events.v1.UserInfo
-	19, // 11: nexus.events.v1.BookingUpdatedPayload.before_json:type_name -> google.protobuf.Value
-	19, // 12: nexus.events.v1.BookingUpdatedPayload.after_json:type_name -> google.protobuf.Value
-	18, // 13: nexus.events.v1.BookingUpdateFailedPayload.user:type_name -> nexus.events.v1.UserInfo
-	3,  // 14: nexus.events.v1.BookingUpdateFailedPayload.reason:type_name -> nexus.events.v1.BookingUpdateFailedPayload.FailureReason
-	18, // 15: nexus.events.v1.BookingApprovedPayload.user:type_name -> nexus.events.v1.UserInfo
-	18, // 16: nexus.events.v1.BookingRejectedPayload.user:type_name -> nexus.events.v1.UserInfo
-	7,  // 17: nexus.events.v1.BookingForwardPayload.booking_note:type_name -> nexus.events.v1.BookingNote
-	18, // 18: nexus.events.v1.BookingForwardPayload.user:type_name -> nexus.events.v1.UserInfo
-	19, // [19:19] is the sub-list for method output_type
-	19, // [19:19] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	7,  // 0: nexus.events.v1.BookingNote.Items:type_name -> nexus.events.v1.BookingNoteItem
+	5,  // 1: nexus.events.v1.BookingNote.Containers:type_name -> nexus.events.v1.BookingNoteContainer
+	6,  // 2: nexus.events.v1.BookingNote.Participants:type_name -> nexus.events.v1.BookingParticipant
+	4,  // 3: nexus.events.v1.BookingNote.References:type_name -> nexus.events.v1.BookingNoteReference
+	0,  // 4: nexus.events.v1.BookingCreationFailedPayload.source:type_name -> nexus.events.v1.BookingSource
+	1,  // 5: nexus.events.v1.BookingCreationFailedPayload.reason:type_name -> nexus.events.v1.BookingCreationFailedPayload.FailureReason
+	0,  // 6: nexus.events.v1.BookingCreatedPayload.source:type_name -> nexus.events.v1.BookingSource
+	0,  // 7: nexus.events.v1.BookingProcessingFailedPayload.source:type_name -> nexus.events.v1.BookingSource
+	2,  // 8: nexus.events.v1.BookingProcessingFailedPayload.reason:type_name -> nexus.events.v1.BookingProcessingFailedPayload.FailureReason
+	0,  // 9: nexus.events.v1.BookingProcessedPayload.source:type_name -> nexus.events.v1.BookingSource
+	19, // 10: nexus.events.v1.BookingFieldAmendedPayload.user:type_name -> nexus.events.v1.UserInfo
+	19, // 11: nexus.events.v1.BookingUpdatedPayload.user:type_name -> nexus.events.v1.UserInfo
+	20, // 12: nexus.events.v1.BookingUpdatedPayload.before_json:type_name -> google.protobuf.Value
+	20, // 13: nexus.events.v1.BookingUpdatedPayload.after_json:type_name -> google.protobuf.Value
+	19, // 14: nexus.events.v1.BookingUpdateFailedPayload.user:type_name -> nexus.events.v1.UserInfo
+	3,  // 15: nexus.events.v1.BookingUpdateFailedPayload.reason:type_name -> nexus.events.v1.BookingUpdateFailedPayload.FailureReason
+	19, // 16: nexus.events.v1.BookingApprovedPayload.user:type_name -> nexus.events.v1.UserInfo
+	19, // 17: nexus.events.v1.BookingRejectedPayload.user:type_name -> nexus.events.v1.UserInfo
+	8,  // 18: nexus.events.v1.BookingForwardPayload.booking_note:type_name -> nexus.events.v1.BookingNote
+	19, // 19: nexus.events.v1.BookingForwardPayload.user:type_name -> nexus.events.v1.UserInfo
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_proto_nexus_events_v1_booking_proto_init() }
@@ -1941,7 +2076,7 @@ func file_proto_nexus_events_v1_booking_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_nexus_events_v1_booking_proto_rawDesc), len(file_proto_nexus_events_v1_booking_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   14,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
