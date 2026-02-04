@@ -12,103 +12,117 @@ enum BookingSource {
   UPLOAD = 1;
 }
 
+message BookingNoteReference {
+  string id = 1;
+  string booking_note_id = 2;
+  string reference_template_id = 3;
+  string value = 4;
+  string label = 5;
+  bool mandatory = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
 message BookingNoteContainer {
-	string id = 1;
-	string booking_note_id = 2;
-	string container_type = 3;
-	int32  container_amount = 4;
-	int32  teu = 5;
-	string created_at = 6;
-	string updated_at = 7;
-	string deleted_at = 8;
+  string id = 1;
+  string booking_note_id = 2;
+  string container_type = 3;
+  int32 container_amount = 4;
+  int32 teu = 5;
+  string created_at = 6;
+  string updated_at = 7;
+  string deleted_at = 8;
 }
 
 message BookingParticipant {
-	string id = 1;
-	string booking_note_id = 2;
-	string type = 3;
-	string name = 4;
-	string address = 5;
-	string telephone = 6;
-	string fax = 7;
-	string email = 8;
-	string eori = 9;
-	string vat_number = 10;
-	string contact_person = 11;
-	string country_code = 12;
-	string reference_id = 13;
-	string created_at = 14;
-	string updated_at = 15;
-	string deleted_at = 16;
+  string id = 1;
+  string booking_note_id = 2;
+  string type = 3;
+  string name = 4;
+  string address = 5;
+  string telephone = 6;
+  string fax = 7;
+  string email = 8;
+  string eori = 9;
+  string vat_number = 10;
+  string contact_person = 11;
+  string country_code = 12;
+  string reference_id = 13;
+  string created_at = 14;
+  string updated_at = 15;
+  string deleted_at = 16;
 }
 
 message BookingNoteItem {
-	string id = 1;
-	string booking_note_id = 2;
-	string po = 3;
-	string description_of_goods = 4;
-	string hs_code = 5;
-	string package_type = 6;
-	int32  package_amount = 7;
-	string bpo = 8;
-	string dangerous_goods = 9;
-	string imdg_class = 10;
-	string un_number = 11;
-	string packaging_group = 12;
-	double gross_weight_kgs = 13;
-	double measurement_cbm = 14;
-	string cost_center = 15;
-	string additional_reference_1 = 16;
-	string additional_reference_2 = 17;
-	string created_at = 18;
-	string updated_at = 19;
-	string deleted_at = 20;
+  string id = 1;
+  string booking_note_id = 2;
+  string po = 3;
+  string description_of_goods = 4;
+  string hs_code = 5;
+  string package_type = 6;
+  int32 package_amount = 7;
+  string bpo = 8;
+  string dangerous_goods = 9;
+  string imdg_class = 10;
+  string un_number = 11;
+  string packaging_group = 12;
+  double gross_weight_kgs = 13;
+  double measurement_cbm = 14;
+  string cost_center = 15;
+  string additional_reference_1 = 16;
+  string additional_reference_2 = 17;
+  string created_at = 18;
+  string updated_at = 19;
+  string deleted_at = 20;
 }
 
 message BookingNote {
-    string id = 1;
-	string document_type = 2;
-	string payment_terms = 3;
-	string incoterms = 4;
-	string order_type = 5;
-	bool   priority_shipment = 6;
-	string final_destination_delivery_date = 7;
-	string place_of_delivery = 8;
-	string final_destination = 9;
-	string export_licence_no = 10;
-	string so_number = 11;
-	string place_of_receipt = 12;
-	string consol_code_no = 13;
-	string freight_payable_nos = 14;
-	string loading_port = 15;
-	string destination_port = 16;
-	string cargo_ready_date = 17;
-	string carrier_name = 18;
-	string departure_date = 19;
-	string external_system_id = 20;
-	string document_path = 21;
-	string document_original_name = 22;
-	bool   is_extracted = 23;
-	double extraction_confidence = 24;
-	string extraction_id = 25;
-	string status = 26;
-	string approved_at = 27;
-	string rejected_at = 28;
-	string reviewedBy_id = 29;
-	string createdBy_id = 30;
-	string created_at = 31;
-	string updated_at = 32;
-	string deleted_at = 33;
-	string marks = 34;
-	double total_gross_weight_kgs = 35;
-	double total_measurement_cbm = 36;
+  string id = 1;
+  string document_type = 2;
+  string payment_terms = 3;
+  string incoterms = 4;
+  string order_type = 5;
+  bool priority_shipment = 6;
+  string final_destination_delivery_date = 7;
+  string place_of_delivery = 8;
+  string final_destination = 9;
+  string export_licence_no = 10;
+  string so_number = 11;
+  string place_of_receipt = 12;
+  string consol_code_no = 13;
+  string freight_payable_nos = 14;
+  string loading_port = 15;
+  string destination_port = 16;
+  string cargo_ready_date = 17;
+  string carrier_name = 18;
+  string departure_date = 19;
+  string external_system_id = 20;
+  string document_path = 21;
+  string document_original_name = 22;
+  bool is_extracted = 23;
+  double extraction_confidence = 24;
+  string extraction_id = 25;
+  string status = 26;
+  string approved_at = 27;
+  string rejected_at = 28;
+  string reviewedBy_id = 29;
+  string createdBy_id = 30;
+  string created_at = 31;
+  string updated_at = 32;
+  string deleted_at = 33;
+  string marks = 34;
+  double total_gross_weight_kgs = 35;
+  double total_measurement_cbm = 36;
 
-	repeated BookingNoteItem Items = 37;
-    repeated BookingNoteContainer Containers = 38;
-    repeated BookingParticipant Participants = 39;
+  repeated BookingNoteItem Items = 37;
+  repeated BookingNoteContainer Containers = 38;
+  repeated BookingParticipant Participants = 39;
 
-    string requested_dcd_date= 40;
-    string latest_shipping_date = 41;
+  string requested_dcd_date = 40;
+  string latest_shipping_date = 41;
+
+  repeated BookingNoteReference References = 42;
 }
 
 message BookingCreationFailedPayload {
@@ -136,12 +150,12 @@ message BookingCreatedPayload {
 message BookingProcessingFailedPayload {
   enum FailureReason {
     FAILURE_REASON_UNSPECIFIED = 0;
-    FAILED_OBTAINING_AI_PROVIDER= 1;
-    FAILED_EXTRACTING_BOOKING_NOTE= 2;
+    FAILED_OBTAINING_AI_PROVIDER = 1;
+    FAILED_EXTRACTING_BOOKING_NOTE = 2;
     OCR_PARSING_ERROR = 3;
     MAPPING_ERROR = 4;
     INTERNAL_ERROR = 5;
-    FAILED_SCORING_VALIDATION=6;
+    FAILED_SCORING_VALIDATION = 6;
   }
 
   string booking_id = 1;
@@ -156,8 +170,6 @@ message BookingProcessedPayload {
   BookingSource source = 3;
 }
 
-
-
 message BookingFieldAmendedPayload {
   string booking_id = 1;
   UserInfo user = 2;
@@ -167,11 +179,12 @@ message BookingFieldAmendedPayload {
 }
 
 /**
- * BookingUpdatedPayload contains the two booking datasets before and after update, created by the PUT endpoint.
- * For more granular information look for events of the type BookingFieldAmended
+ * BookingUpdatedPayload contains the two booking datasets before and after
+ * update, created by the PUT endpoint. For more granular information look for
+ * events of the type BookingFieldAmended
  */
 message BookingUpdatedPayload {
-  string booking_id =1;
+  string booking_id = 1;
   UserInfo user = 2;
   google.protobuf.Value before_json = 3;
   google.protobuf.Value after_json = 4;
@@ -181,7 +194,7 @@ message BookingUpdateFailedPayload {
   enum FailureReason {
     INTERNAL_ERROR = 0;
   }
-  string booking_id =1;
+  string booking_id = 1;
   UserInfo user = 2;
   FailureReason reason = 3;
 }
