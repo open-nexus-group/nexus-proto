@@ -4,29 +4,25 @@ package nexus.events.v1;
 
 option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
 
-// ArrayProcessRequestPayload is the payload for document processing requests.
-// This is sent to the array-api to trigger document processing.
 message ArrayProcessRequestPayload {
     string correlation_id = 1;
     string document_type = 2;
     string file_url = 3;
     optional string file_name = 4;
     optional string file_type = 5;
-    bytes options = 6;   // JSON-encoded options
-    bytes metadata = 7;  // JSON-encoded metadata
+    bytes options = 6;
+    bytes metadata = 7;
 }
 
-// ArrayJobCompletedPayload is published when a job completes successfully.
 message ArrayJobCompletedPayload {
     string job_id = 1;
     string correlation_id = 2;
-    bytes result = 3;              // JSON-encoded result
-    bytes overlay = 4;             // JSON-encoded overlay
+    bytes result = 3;
+    bytes overlay = 4;
     optional double confidence = 5;
     int32 total_duration_ms = 6;
 }
 
-// ArrayJobFailedPayload is published when a job fails.
 message ArrayJobFailedPayload {
     string job_id = 1;
     string correlation_id = 2;
