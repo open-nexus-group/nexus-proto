@@ -25,11 +25,12 @@ type ArrayProcessRequestPayload struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CorrelationId string                 `protobuf:"bytes,1,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
 	DocumentType  string                 `protobuf:"bytes,2,opt,name=document_type,json=documentType,proto3" json:"document_type,omitempty"`
-	FileUrl       string                 `protobuf:"bytes,3,opt,name=file_url,json=fileUrl,proto3" json:"file_url,omitempty"`
-	FileName      *string                `protobuf:"bytes,4,opt,name=file_name,json=fileName,proto3,oneof" json:"file_name,omitempty"`
-	FileType      *string                `protobuf:"bytes,5,opt,name=file_type,json=fileType,proto3,oneof" json:"file_type,omitempty"`
-	Options       []byte                 `protobuf:"bytes,6,opt,name=options,proto3" json:"options,omitempty"`
-	Metadata      []byte                 `protobuf:"bytes,7,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	FileKey       string                 `protobuf:"bytes,3,opt,name=file_key,json=fileKey,proto3" json:"file_key,omitempty"`
+	Bucket        *string                `protobuf:"bytes,4,opt,name=bucket,proto3,oneof" json:"bucket,omitempty"`
+	FileName      *string                `protobuf:"bytes,5,opt,name=file_name,json=fileName,proto3,oneof" json:"file_name,omitempty"`
+	FileType      *string                `protobuf:"bytes,6,opt,name=file_type,json=fileType,proto3,oneof" json:"file_type,omitempty"`
+	Options       []byte                 `protobuf:"bytes,7,opt,name=options,proto3" json:"options,omitempty"`
+	Metadata      []byte                 `protobuf:"bytes,8,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -78,9 +79,16 @@ func (x *ArrayProcessRequestPayload) GetDocumentType() string {
 	return ""
 }
 
-func (x *ArrayProcessRequestPayload) GetFileUrl() string {
+func (x *ArrayProcessRequestPayload) GetFileKey() string {
 	if x != nil {
-		return x.FileUrl
+		return x.FileKey
+	}
+	return ""
+}
+
+func (x *ArrayProcessRequestPayload) GetBucket() string {
+	if x != nil && x.Bucket != nil {
+		return *x.Bucket
 	}
 	return ""
 }
@@ -114,15 +122,17 @@ func (x *ArrayProcessRequestPayload) GetMetadata() []byte {
 }
 
 type ArrayJobCompletedPayload struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	JobId           string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
-	CorrelationId   string                 `protobuf:"bytes,2,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
-	Result          []byte                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
-	Overlay         []byte                 `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"`
-	Confidence      *float64               `protobuf:"fixed64,5,opt,name=confidence,proto3,oneof" json:"confidence,omitempty"`
-	TotalDurationMs int32                  `protobuf:"varint,6,opt,name=total_duration_ms,json=totalDurationMs,proto3" json:"total_duration_ms,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	JobId               string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	CorrelationId       string                 `protobuf:"bytes,2,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
+	Result              []byte                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	Overlay             []byte                 `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"`
+	Confidence          *float64               `protobuf:"fixed64,5,opt,name=confidence,proto3,oneof" json:"confidence,omitempty"`
+	TotalDurationMs     int32                  `protobuf:"varint,6,opt,name=total_duration_ms,json=totalDurationMs,proto3" json:"total_duration_ms,omitempty"`
+	ConvertedFileKey    *string                `protobuf:"bytes,7,opt,name=converted_file_key,json=convertedFileKey,proto3,oneof" json:"converted_file_key,omitempty"`
+	ConvertedFileBucket *string                `protobuf:"bytes,8,opt,name=converted_file_bucket,json=convertedFileBucket,proto3,oneof" json:"converted_file_bucket,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *ArrayJobCompletedPayload) Reset() {
@@ -195,6 +205,20 @@ func (x *ArrayJobCompletedPayload) GetTotalDurationMs() int32 {
 		return x.TotalDurationMs
 	}
 	return 0
+}
+
+func (x *ArrayJobCompletedPayload) GetConvertedFileKey() string {
+	if x != nil && x.ConvertedFileKey != nil {
+		return *x.ConvertedFileKey
+	}
+	return ""
+}
+
+func (x *ArrayJobCompletedPayload) GetConvertedFileBucket() string {
+	if x != nil && x.ConvertedFileBucket != nil {
+		return *x.ConvertedFileBucket
+	}
+	return ""
 }
 
 type ArrayJobFailedPayload struct {
@@ -277,19 +301,21 @@ var File_proto_nexus_events_v1_array_proto protoreflect.FileDescriptor
 
 const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"\n" +
-	"!proto/nexus/events/v1/array.proto\x12\x0fnexus.events.v1\"\x99\x02\n" +
+	"!proto/nexus/events/v1/array.proto\x12\x0fnexus.events.v1\"\xc1\x02\n" +
 	"\x1aArrayProcessRequestPayload\x12%\n" +
 	"\x0ecorrelation_id\x18\x01 \x01(\tR\rcorrelationId\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12\x19\n" +
-	"\bfile_url\x18\x03 \x01(\tR\afileUrl\x12 \n" +
-	"\tfile_name\x18\x04 \x01(\tH\x00R\bfileName\x88\x01\x01\x12 \n" +
-	"\tfile_type\x18\x05 \x01(\tH\x01R\bfileType\x88\x01\x01\x12\x18\n" +
-	"\aoptions\x18\x06 \x01(\fR\aoptions\x12\x1a\n" +
-	"\bmetadata\x18\a \x01(\fR\bmetadataB\f\n" +
+	"\bfile_key\x18\x03 \x01(\tR\afileKey\x12\x1b\n" +
+	"\x06bucket\x18\x04 \x01(\tH\x00R\x06bucket\x88\x01\x01\x12 \n" +
+	"\tfile_name\x18\x05 \x01(\tH\x01R\bfileName\x88\x01\x01\x12 \n" +
+	"\tfile_type\x18\x06 \x01(\tH\x02R\bfileType\x88\x01\x01\x12\x18\n" +
+	"\aoptions\x18\a \x01(\fR\aoptions\x12\x1a\n" +
+	"\bmetadata\x18\b \x01(\fR\bmetadataB\t\n" +
+	"\a_bucketB\f\n" +
 	"\n" +
 	"_file_nameB\f\n" +
 	"\n" +
-	"_file_type\"\xea\x01\n" +
+	"_file_type\"\x87\x03\n" +
 	"\x18ArrayJobCompletedPayload\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12%\n" +
 	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\x12\x16\n" +
@@ -298,8 +324,12 @@ const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"\n" +
 	"confidence\x18\x05 \x01(\x01H\x00R\n" +
 	"confidence\x88\x01\x01\x12*\n" +
-	"\x11total_duration_ms\x18\x06 \x01(\x05R\x0ftotalDurationMsB\r\n" +
-	"\v_confidence\"\xba\x01\n" +
+	"\x11total_duration_ms\x18\x06 \x01(\x05R\x0ftotalDurationMs\x121\n" +
+	"\x12converted_file_key\x18\a \x01(\tH\x01R\x10convertedFileKey\x88\x01\x01\x127\n" +
+	"\x15converted_file_bucket\x18\b \x01(\tH\x02R\x13convertedFileBucket\x88\x01\x01B\r\n" +
+	"\v_confidenceB\x15\n" +
+	"\x13_converted_file_keyB\x18\n" +
+	"\x16_converted_file_bucket\"\xba\x01\n" +
 	"\x15ArrayJobFailedPayload\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12%\n" +
 	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\x12\x1d\n" +
