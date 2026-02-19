@@ -21,8 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ArrayProcessRequestPayload is the payload for document processing requests.
-// This is sent to the array-api to trigger document processing.
 type ArrayProcessRequestPayload struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CorrelationId string                 `protobuf:"bytes,1,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
@@ -30,8 +28,8 @@ type ArrayProcessRequestPayload struct {
 	FileUrl       string                 `protobuf:"bytes,3,opt,name=file_url,json=fileUrl,proto3" json:"file_url,omitempty"`
 	FileName      *string                `protobuf:"bytes,4,opt,name=file_name,json=fileName,proto3,oneof" json:"file_name,omitempty"`
 	FileType      *string                `protobuf:"bytes,5,opt,name=file_type,json=fileType,proto3,oneof" json:"file_type,omitempty"`
-	Options       []byte                 `protobuf:"bytes,6,opt,name=options,proto3" json:"options,omitempty"`   // JSON-encoded options
-	Metadata      []byte                 `protobuf:"bytes,7,opt,name=metadata,proto3" json:"metadata,omitempty"` // JSON-encoded metadata
+	Options       []byte                 `protobuf:"bytes,6,opt,name=options,proto3" json:"options,omitempty"`
+	Metadata      []byte                 `protobuf:"bytes,7,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -115,13 +113,12 @@ func (x *ArrayProcessRequestPayload) GetMetadata() []byte {
 	return nil
 }
 
-// ArrayJobCompletedPayload is published when a job completes successfully.
 type ArrayJobCompletedPayload struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	JobId           string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
 	CorrelationId   string                 `protobuf:"bytes,2,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
-	Result          []byte                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`   // JSON-encoded result
-	Overlay         []byte                 `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"` // JSON-encoded overlay
+	Result          []byte                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	Overlay         []byte                 `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"`
 	Confidence      *float64               `protobuf:"fixed64,5,opt,name=confidence,proto3,oneof" json:"confidence,omitempty"`
 	TotalDurationMs int32                  `protobuf:"varint,6,opt,name=total_duration_ms,json=totalDurationMs,proto3" json:"total_duration_ms,omitempty"`
 	unknownFields   protoimpl.UnknownFields
@@ -200,7 +197,6 @@ func (x *ArrayJobCompletedPayload) GetTotalDurationMs() int32 {
 	return 0
 }
 
-// ArrayJobFailedPayload is published when a job fails.
 type ArrayJobFailedPayload struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JobId         string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
