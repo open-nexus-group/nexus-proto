@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+
+message ArrayProcessRequestPayload {
+    string correlation_id = 1;
+    string document_type = 2;
+    string file_key = 3;
+    optional string bucket = 4;
+    optional string file_name = 5;
+    optional string file_type = 6;
+    bytes options = 7;
+    bytes metadata = 8;
+}
+
+message ArrayJobCompletedPayload {
+    string job_id = 1;
+    string correlation_id = 2;
+    bytes result = 3;
+    bytes overlay = 4;
+    optional double confidence = 5;
+    int32 total_duration_ms = 6;
+    optional string converted_file_key = 7;
+    optional string converted_file_bucket = 8;
+}
+
+message ArrayJobFailedPayload {
+    string job_id = 1;
+    string correlation_id = 2;
+    string error_code = 3;
+    string error_message = 4;
+    int32 retry_count = 5;
+}
