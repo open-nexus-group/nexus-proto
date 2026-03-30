@@ -4,7 +4,7 @@ package nexus.events.v1;
 
 import "google/protobuf/any.proto";
 
-option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
 message NotificationPayload {
 
