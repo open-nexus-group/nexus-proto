@@ -62,6 +62,7 @@ message ContainerData {
   bool is_tank = 14;
   bool has_equipment = 15;
   string equipment = 16;
+  int32 cbm = 17;
 }
 
 message OrganizationLocation {
