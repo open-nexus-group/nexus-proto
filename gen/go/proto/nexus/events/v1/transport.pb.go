@@ -2392,42 +2392,43 @@ func (x *Schedule) GetScac() string {
 }
 
 type SeaFile struct {
-	state                     protoimpl.MessageState  `protogen:"open.v1"`
-	ParentId                  string                  `protobuf:"bytes,1,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
-	NexusId                   string                  `protobuf:"bytes,2,opt,name=nexus_id,json=nexusId,proto3" json:"nexus_id,omitempty"`
-	Status                    string                  `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
-	Mode                      string                  `protobuf:"bytes,4,opt,name=mode,proto3" json:"mode,omitempty"`
-	CreatedByTenant           string                  `protobuf:"bytes,5,opt,name=created_by_tenant,json=createdByTenant,proto3" json:"created_by_tenant,omitempty"`
-	CreatedByUser             string                  `protobuf:"bytes,6,opt,name=created_by_user,json=createdByUser,proto3" json:"created_by_user,omitempty"`
-	InitialCargoReadyDateUtc  string                  `protobuf:"bytes,7,opt,name=initial_cargo_ready_date_utc,json=initialCargoReadyDateUtc,proto3" json:"initial_cargo_ready_date_utc,omitempty"`
-	PlannedCargoReadyDateUtc  string                  `protobuf:"bytes,8,opt,name=planned_cargo_ready_date_utc,json=plannedCargoReadyDateUtc,proto3" json:"planned_cargo_ready_date_utc,omitempty"`
-	ActualCargoReadyDateUtc   string                  `protobuf:"bytes,9,opt,name=actual_cargo_ready_date_utc,json=actualCargoReadyDateUtc,proto3" json:"actual_cargo_ready_date_utc,omitempty"`
-	BookingInstructions       string                  `protobuf:"bytes,10,opt,name=booking_instructions,json=bookingInstructions,proto3" json:"booking_instructions,omitempty"`
-	PlaceOfReceipt            string                  `protobuf:"bytes,11,opt,name=place_of_receipt,json=placeOfReceipt,proto3" json:"place_of_receipt,omitempty"`
-	PlaceOfDelivery           string                  `protobuf:"bytes,12,opt,name=place_of_delivery,json=placeOfDelivery,proto3" json:"place_of_delivery,omitempty"`
-	EstimatedTimeDepartureUtc string                  `protobuf:"bytes,13,opt,name=estimated_time_departure_utc,json=estimatedTimeDepartureUtc,proto3" json:"estimated_time_departure_utc,omitempty"`
-	EstimatedTimeArrivalUtc   string                  `protobuf:"bytes,14,opt,name=estimated_time_arrival_utc,json=estimatedTimeArrivalUtc,proto3" json:"estimated_time_arrival_utc,omitempty"`
-	ActualTimeDepartureUtc    string                  `protobuf:"bytes,15,opt,name=actual_time_departure_utc,json=actualTimeDepartureUtc,proto3" json:"actual_time_departure_utc,omitempty"`
-	ActualTimeArrivalUtc      string                  `protobuf:"bytes,16,opt,name=actual_time_arrival_utc,json=actualTimeArrivalUtc,proto3" json:"actual_time_arrival_utc,omitempty"`
-	Schedules                 []*Schedule             `protobuf:"bytes,17,rep,name=schedules,proto3" json:"schedules,omitempty"`
-	Cargo                     []*CargoUnit            `protobuf:"bytes,18,rep,name=cargo,proto3" json:"cargo,omitempty"`
-	Children                  []*SeaFile              `protobuf:"bytes,19,rep,name=children,proto3" json:"children,omitempty"`
-	Numbers                   []*Number               `protobuf:"bytes,20,rep,name=numbers,proto3" json:"numbers,omitempty"`
-	AmsFilingDate             string                  `protobuf:"bytes,21,opt,name=ams_filing_date,json=amsFilingDate,proto3" json:"ams_filing_date,omitempty"`
-	Documents                 []*Document             `protobuf:"bytes,22,rep,name=documents,proto3" json:"documents,omitempty"`
-	Participants              []*Participant          `protobuf:"bytes,23,rep,name=participants,proto3" json:"participants,omitempty"`
-	FileExternalSystemId      []*FileExternalSystemID `protobuf:"bytes,24,rep,name=file_external_system_id,json=fileExternalSystemId,proto3" json:"file_external_system_id,omitempty"`
-	Incoterm                  string                  `protobuf:"bytes,25,opt,name=incoterm,proto3" json:"incoterm,omitempty"`
-	EarliestSailingDateUtc    string                  `protobuf:"bytes,26,opt,name=earliest_sailing_date_utc,json=earliestSailingDateUtc,proto3" json:"earliest_sailing_date_utc,omitempty"`
-	PortOfLoading             string                  `protobuf:"bytes,27,opt,name=port_of_loading,json=portOfLoading,proto3" json:"port_of_loading,omitempty"`
-	PortOfDestination         string                  `protobuf:"bytes,28,opt,name=port_of_destination,json=portOfDestination,proto3" json:"port_of_destination,omitempty"`
-	Type                      string                  `protobuf:"bytes,29,opt,name=type,proto3" json:"type,omitempty"`
-	LatestArrivalAtPodUtc     string                  `protobuf:"bytes,30,opt,name=latest_arrival_at_pod_utc,json=latestArrivalAtPodUtc,proto3" json:"latest_arrival_at_pod_utc,omitempty"`
-	IsfFillingDateUtc         string                  `protobuf:"bytes,31,opt,name=isf_filling_date_utc,json=isfFillingDateUtc,proto3" json:"isf_filling_date_utc,omitempty"`
-	BillOfLadingNumber        string                  `protobuf:"bytes,32,opt,name=bill_of_lading_number,json=billOfLadingNumber,proto3" json:"bill_of_lading_number,omitempty"`
-	HouseBillOfLadingNumber   string                  `protobuf:"bytes,33,opt,name=house_bill_of_lading_number,json=houseBillOfLadingNumber,proto3" json:"house_bill_of_lading_number,omitempty"`
-	unknownFields             protoimpl.UnknownFields
-	sizeCache                 protoimpl.SizeCache
+	state                           protoimpl.MessageState  `protogen:"open.v1"`
+	ParentId                        string                  `protobuf:"bytes,1,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
+	NexusId                         string                  `protobuf:"bytes,2,opt,name=nexus_id,json=nexusId,proto3" json:"nexus_id,omitempty"`
+	Status                          string                  `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Mode                            string                  `protobuf:"bytes,4,opt,name=mode,proto3" json:"mode,omitempty"`
+	CreatedByTenant                 string                  `protobuf:"bytes,5,opt,name=created_by_tenant,json=createdByTenant,proto3" json:"created_by_tenant,omitempty"`
+	CreatedByUser                   string                  `protobuf:"bytes,6,opt,name=created_by_user,json=createdByUser,proto3" json:"created_by_user,omitempty"`
+	InitialCargoReadyDateUtc        string                  `protobuf:"bytes,7,opt,name=initial_cargo_ready_date_utc,json=initialCargoReadyDateUtc,proto3" json:"initial_cargo_ready_date_utc,omitempty"`
+	PlannedCargoReadyDateUtc        string                  `protobuf:"bytes,8,opt,name=planned_cargo_ready_date_utc,json=plannedCargoReadyDateUtc,proto3" json:"planned_cargo_ready_date_utc,omitempty"`
+	ActualCargoReadyDateUtc         string                  `protobuf:"bytes,9,opt,name=actual_cargo_ready_date_utc,json=actualCargoReadyDateUtc,proto3" json:"actual_cargo_ready_date_utc,omitempty"`
+	BookingInstructions             string                  `protobuf:"bytes,10,opt,name=booking_instructions,json=bookingInstructions,proto3" json:"booking_instructions,omitempty"`
+	PlaceOfReceipt                  string                  `protobuf:"bytes,11,opt,name=place_of_receipt,json=placeOfReceipt,proto3" json:"place_of_receipt,omitempty"`
+	PlaceOfDelivery                 string                  `protobuf:"bytes,12,opt,name=place_of_delivery,json=placeOfDelivery,proto3" json:"place_of_delivery,omitempty"`
+	EstimatedTimeDepartureUtc       string                  `protobuf:"bytes,13,opt,name=estimated_time_departure_utc,json=estimatedTimeDepartureUtc,proto3" json:"estimated_time_departure_utc,omitempty"`
+	EstimatedTimeArrivalUtc         string                  `protobuf:"bytes,14,opt,name=estimated_time_arrival_utc,json=estimatedTimeArrivalUtc,proto3" json:"estimated_time_arrival_utc,omitempty"`
+	ActualTimeDepartureUtc          string                  `protobuf:"bytes,15,opt,name=actual_time_departure_utc,json=actualTimeDepartureUtc,proto3" json:"actual_time_departure_utc,omitempty"`
+	ActualTimeArrivalUtc            string                  `protobuf:"bytes,16,opt,name=actual_time_arrival_utc,json=actualTimeArrivalUtc,proto3" json:"actual_time_arrival_utc,omitempty"`
+	Schedules                       []*Schedule             `protobuf:"bytes,17,rep,name=schedules,proto3" json:"schedules,omitempty"`
+	Cargo                           []*CargoUnit            `protobuf:"bytes,18,rep,name=cargo,proto3" json:"cargo,omitempty"`
+	Children                        []*SeaFile              `protobuf:"bytes,19,rep,name=children,proto3" json:"children,omitempty"`
+	Numbers                         []*Number               `protobuf:"bytes,20,rep,name=numbers,proto3" json:"numbers,omitempty"`
+	AmsFilingDate                   string                  `protobuf:"bytes,21,opt,name=ams_filing_date,json=amsFilingDate,proto3" json:"ams_filing_date,omitempty"`
+	Documents                       []*Document             `protobuf:"bytes,22,rep,name=documents,proto3" json:"documents,omitempty"`
+	Participants                    []*Participant          `protobuf:"bytes,23,rep,name=participants,proto3" json:"participants,omitempty"`
+	FileExternalSystemId            []*FileExternalSystemID `protobuf:"bytes,24,rep,name=file_external_system_id,json=fileExternalSystemId,proto3" json:"file_external_system_id,omitempty"`
+	Incoterm                        string                  `protobuf:"bytes,25,opt,name=incoterm,proto3" json:"incoterm,omitempty"`
+	EarliestSailingDateUtc          string                  `protobuf:"bytes,26,opt,name=earliest_sailing_date_utc,json=earliestSailingDateUtc,proto3" json:"earliest_sailing_date_utc,omitempty"`
+	PortOfLoading                   string                  `protobuf:"bytes,27,opt,name=port_of_loading,json=portOfLoading,proto3" json:"port_of_loading,omitempty"`
+	PortOfDestination               string                  `protobuf:"bytes,28,opt,name=port_of_destination,json=portOfDestination,proto3" json:"port_of_destination,omitempty"`
+	Type                            string                  `protobuf:"bytes,29,opt,name=type,proto3" json:"type,omitempty"`
+	LatestArrivalAtPodUtc           string                  `protobuf:"bytes,30,opt,name=latest_arrival_at_pod_utc,json=latestArrivalAtPodUtc,proto3" json:"latest_arrival_at_pod_utc,omitempty"`
+	IsfFillingDateUtc               string                  `protobuf:"bytes,31,opt,name=isf_filling_date_utc,json=isfFillingDateUtc,proto3" json:"isf_filling_date_utc,omitempty"`
+	BillOfLadingNumber              string                  `protobuf:"bytes,32,opt,name=bill_of_lading_number,json=billOfLadingNumber,proto3" json:"bill_of_lading_number,omitempty"`
+	HouseBillOfLadingNumber         string                  `protobuf:"bytes,33,opt,name=house_bill_of_lading_number,json=houseBillOfLadingNumber,proto3" json:"house_bill_of_lading_number,omitempty"`
+	HouseBillOfLadingNumberIssuedAs string                  `protobuf:"bytes,34,opt,name=house_bill_of_lading_number_issued_as,json=houseBillOfLadingNumberIssuedAs,proto3" json:"house_bill_of_lading_number_issued_as,omitempty"`
+	unknownFields                   protoimpl.UnknownFields
+	sizeCache                       protoimpl.SizeCache
 }
 
 func (x *SeaFile) Reset() {
@@ -2687,6 +2688,13 @@ func (x *SeaFile) GetBillOfLadingNumber() string {
 func (x *SeaFile) GetHouseBillOfLadingNumber() string {
 	if x != nil {
 		return x.HouseBillOfLadingNumber
+	}
+	return ""
+}
+
+func (x *SeaFile) GetHouseBillOfLadingNumberIssuedAs() string {
+	if x != nil {
+		return x.HouseBillOfLadingNumberIssuedAs
 	}
 	return ""
 }
@@ -2968,7 +2976,7 @@ const file_proto_nexus_events_v1_transport_proto_rawDesc = "" +
 	"\x0fcontainer_rates\x18\x17 \x03(\v2*.nexus.events.v1.ContainerTypeScheduleRateR\x0econtainerRates\x12F\n" +
 	"\x0etransshipments\x18\x18 \x03(\v2\x1e.nexus.events.v1.TransshipmentR\x0etransshipments\x12\x16\n" +
 	"\x06status\x18\x19 \x01(\tR\x06status\x12\x12\n" +
-	"\x04scac\x18\x1a \x01(\tR\x04scac\"\xec\f\n" +
+	"\x04scac\x18\x1a \x01(\tR\x04scac\"\xbc\r\n" +
 	"\aSeaFile\x12\x1b\n" +
 	"\tparent_id\x18\x01 \x01(\tR\bparentId\x12\x19\n" +
 	"\bnexus_id\x18\x02 \x01(\tR\anexusId\x12\x16\n" +
@@ -3003,7 +3011,8 @@ const file_proto_nexus_events_v1_transport_proto_rawDesc = "" +
 	"\x19latest_arrival_at_pod_utc\x18\x1e \x01(\tR\x15latestArrivalAtPodUtc\x12/\n" +
 	"\x14isf_filling_date_utc\x18\x1f \x01(\tR\x11isfFillingDateUtc\x121\n" +
 	"\x15bill_of_lading_number\x18  \x01(\tR\x12billOfLadingNumber\x12<\n" +
-	"\x1bhouse_bill_of_lading_number\x18! \x01(\tR\x17houseBillOfLadingNumberBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
+	"\x1bhouse_bill_of_lading_number\x18! \x01(\tR\x17houseBillOfLadingNumber\x12N\n" +
+	"%house_bill_of_lading_number_issued_as\x18\" \x01(\tR\x1fhouseBillOfLadingNumberIssuedAsBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_transport_proto_rawDescOnce sync.Once

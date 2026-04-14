@@ -299,4 +299,6 @@ message SeaFile {
   string isf_filling_date_utc = 31;
   string bill_of_lading_number = 32;
   string house_bill_of_lading_number = 33;
+  string house_bill_of_lading_number_issued_as = 34;
+
 }
