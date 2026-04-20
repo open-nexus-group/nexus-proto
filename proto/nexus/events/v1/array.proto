@@ -13,17 +13,36 @@ message ArrayProcessRequestPayload {
     optional string file_type = 6;
     bytes options = 7;
     bytes metadata = 8;
+    optional string body_text = 9;
+    repeated FileRef attachments = 10;
+}
+
+message FileRef {
+    string bucket = 1;
+    string key = 2;
+    string filename = 3;
+    string mime_type = 4;
 }
 
 message ArrayJobCompletedPayload {
+    reserved 7, 8;
     string job_id = 1;
     string correlation_id = 2;
     bytes result = 3;
     bytes overlay = 4;
     optional double confidence = 5;
     int32 total_duration_ms = 6;
-    optional string converted_file_key = 7;
-    optional string converted_file_bucket = 8;
+    repeated AttachmentExtraction attachment_extractions = 9;
+}
+
+message AttachmentExtraction {
+    string source_bucket = 1;
+    string source_key = 2;
+    string status = 3;
+    optional string converted_bucket = 4;
+    optional string converted_key = 5;
+    optional string error_code = 6;
+    optional string error_message = 7;
 }
 
 message ArrayJobFailedPayload {

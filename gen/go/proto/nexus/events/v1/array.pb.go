@@ -31,6 +31,8 @@ type ArrayProcessRequestPayload struct {
 	FileType      *string                `protobuf:"bytes,6,opt,name=file_type,json=fileType,proto3,oneof" json:"file_type,omitempty"`
 	Options       []byte                 `protobuf:"bytes,7,opt,name=options,proto3" json:"options,omitempty"`
 	Metadata      []byte                 `protobuf:"bytes,8,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	BodyText      *string                `protobuf:"bytes,9,opt,name=body_text,json=bodyText,proto3,oneof" json:"body_text,omitempty"`
+	Attachments   []*FileRef             `protobuf:"bytes,10,rep,name=attachments,proto3" json:"attachments,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -121,23 +123,104 @@ func (x *ArrayProcessRequestPayload) GetMetadata() []byte {
 	return nil
 }
 
+func (x *ArrayProcessRequestPayload) GetBodyText() string {
+	if x != nil && x.BodyText != nil {
+		return *x.BodyText
+	}
+	return ""
+}
+
+func (x *ArrayProcessRequestPayload) GetAttachments() []*FileRef {
+	if x != nil {
+		return x.Attachments
+	}
+	return nil
+}
+
+type FileRef struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Bucket        string                 `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Filename      string                 `protobuf:"bytes,3,opt,name=filename,proto3" json:"filename,omitempty"`
+	MimeType      string                 `protobuf:"bytes,4,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FileRef) Reset() {
+	*x = FileRef{}
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FileRef) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FileRef) ProtoMessage() {}
+
+func (x *FileRef) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FileRef.ProtoReflect.Descriptor instead.
+func (*FileRef) Descriptor() ([]byte, []int) {
+	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *FileRef) GetBucket() string {
+	if x != nil {
+		return x.Bucket
+	}
+	return ""
+}
+
+func (x *FileRef) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *FileRef) GetFilename() string {
+	if x != nil {
+		return x.Filename
+	}
+	return ""
+}
+
+func (x *FileRef) GetMimeType() string {
+	if x != nil {
+		return x.MimeType
+	}
+	return ""
+}
+
 type ArrayJobCompletedPayload struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	JobId               string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
-	CorrelationId       string                 `protobuf:"bytes,2,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
-	Result              []byte                 `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
-	Overlay             []byte                 `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"`
-	Confidence          *float64               `protobuf:"fixed64,5,opt,name=confidence,proto3,oneof" json:"confidence,omitempty"`
-	TotalDurationMs     int32                  `protobuf:"varint,6,opt,name=total_duration_ms,json=totalDurationMs,proto3" json:"total_duration_ms,omitempty"`
-	ConvertedFileKey    *string                `protobuf:"bytes,7,opt,name=converted_file_key,json=convertedFileKey,proto3,oneof" json:"converted_file_key,omitempty"`
-	ConvertedFileBucket *string                `protobuf:"bytes,8,opt,name=converted_file_bucket,json=convertedFileBucket,proto3,oneof" json:"converted_file_bucket,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	state                 protoimpl.MessageState  `protogen:"open.v1"`
+	JobId                 string                  `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	CorrelationId         string                  `protobuf:"bytes,2,opt,name=correlation_id,json=correlationId,proto3" json:"correlation_id,omitempty"`
+	Result                []byte                  `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
+	Overlay               []byte                  `protobuf:"bytes,4,opt,name=overlay,proto3" json:"overlay,omitempty"`
+	Confidence            *float64                `protobuf:"fixed64,5,opt,name=confidence,proto3,oneof" json:"confidence,omitempty"`
+	TotalDurationMs       int32                   `protobuf:"varint,6,opt,name=total_duration_ms,json=totalDurationMs,proto3" json:"total_duration_ms,omitempty"`
+	AttachmentExtractions []*AttachmentExtraction `protobuf:"bytes,9,rep,name=attachment_extractions,json=attachmentExtractions,proto3" json:"attachment_extractions,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *ArrayJobCompletedPayload) Reset() {
 	*x = ArrayJobCompletedPayload{}
-	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[1]
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +232,7 @@ func (x *ArrayJobCompletedPayload) String() string {
 func (*ArrayJobCompletedPayload) ProtoMessage() {}
 
 func (x *ArrayJobCompletedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[1]
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +245,7 @@ func (x *ArrayJobCompletedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArrayJobCompletedPayload.ProtoReflect.Descriptor instead.
 func (*ArrayJobCompletedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{1}
+	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ArrayJobCompletedPayload) GetJobId() string {
@@ -207,16 +290,101 @@ func (x *ArrayJobCompletedPayload) GetTotalDurationMs() int32 {
 	return 0
 }
 
-func (x *ArrayJobCompletedPayload) GetConvertedFileKey() string {
-	if x != nil && x.ConvertedFileKey != nil {
-		return *x.ConvertedFileKey
+func (x *ArrayJobCompletedPayload) GetAttachmentExtractions() []*AttachmentExtraction {
+	if x != nil {
+		return x.AttachmentExtractions
+	}
+	return nil
+}
+
+type AttachmentExtraction struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	SourceBucket    string                 `protobuf:"bytes,1,opt,name=source_bucket,json=sourceBucket,proto3" json:"source_bucket,omitempty"`
+	SourceKey       string                 `protobuf:"bytes,2,opt,name=source_key,json=sourceKey,proto3" json:"source_key,omitempty"`
+	Status          string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	ConvertedBucket *string                `protobuf:"bytes,4,opt,name=converted_bucket,json=convertedBucket,proto3,oneof" json:"converted_bucket,omitempty"`
+	ConvertedKey    *string                `protobuf:"bytes,5,opt,name=converted_key,json=convertedKey,proto3,oneof" json:"converted_key,omitempty"`
+	ErrorCode       *string                `protobuf:"bytes,6,opt,name=error_code,json=errorCode,proto3,oneof" json:"error_code,omitempty"`
+	ErrorMessage    *string                `protobuf:"bytes,7,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AttachmentExtraction) Reset() {
+	*x = AttachmentExtraction{}
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttachmentExtraction) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttachmentExtraction) ProtoMessage() {}
+
+func (x *AttachmentExtraction) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttachmentExtraction.ProtoReflect.Descriptor instead.
+func (*AttachmentExtraction) Descriptor() ([]byte, []int) {
+	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AttachmentExtraction) GetSourceBucket() string {
+	if x != nil {
+		return x.SourceBucket
 	}
 	return ""
 }
 
-func (x *ArrayJobCompletedPayload) GetConvertedFileBucket() string {
-	if x != nil && x.ConvertedFileBucket != nil {
-		return *x.ConvertedFileBucket
+func (x *AttachmentExtraction) GetSourceKey() string {
+	if x != nil {
+		return x.SourceKey
+	}
+	return ""
+}
+
+func (x *AttachmentExtraction) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *AttachmentExtraction) GetConvertedBucket() string {
+	if x != nil && x.ConvertedBucket != nil {
+		return *x.ConvertedBucket
+	}
+	return ""
+}
+
+func (x *AttachmentExtraction) GetConvertedKey() string {
+	if x != nil && x.ConvertedKey != nil {
+		return *x.ConvertedKey
+	}
+	return ""
+}
+
+func (x *AttachmentExtraction) GetErrorCode() string {
+	if x != nil && x.ErrorCode != nil {
+		return *x.ErrorCode
+	}
+	return ""
+}
+
+func (x *AttachmentExtraction) GetErrorMessage() string {
+	if x != nil && x.ErrorMessage != nil {
+		return *x.ErrorMessage
 	}
 	return ""
 }
@@ -234,7 +402,7 @@ type ArrayJobFailedPayload struct {
 
 func (x *ArrayJobFailedPayload) Reset() {
 	*x = ArrayJobFailedPayload{}
-	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[2]
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -246,7 +414,7 @@ func (x *ArrayJobFailedPayload) String() string {
 func (*ArrayJobFailedPayload) ProtoMessage() {}
 
 func (x *ArrayJobFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[2]
+	mi := &file_proto_nexus_events_v1_array_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -259,7 +427,7 @@ func (x *ArrayJobFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArrayJobFailedPayload.ProtoReflect.Descriptor instead.
 func (*ArrayJobFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{2}
+	return file_proto_nexus_events_v1_array_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ArrayJobFailedPayload) GetJobId() string {
@@ -301,7 +469,7 @@ var File_proto_nexus_events_v1_array_proto protoreflect.FileDescriptor
 
 const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"\n" +
-	"!proto/nexus/events/v1/array.proto\x12\x0fnexus.events.v1\"\xc1\x02\n" +
+	"!proto/nexus/events/v1/array.proto\x12\x0fnexus.events.v1\"\xad\x03\n" +
 	"\x1aArrayProcessRequestPayload\x12%\n" +
 	"\x0ecorrelation_id\x18\x01 \x01(\tR\rcorrelationId\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12\x19\n" +
@@ -310,12 +478,22 @@ const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"\tfile_name\x18\x05 \x01(\tH\x01R\bfileName\x88\x01\x01\x12 \n" +
 	"\tfile_type\x18\x06 \x01(\tH\x02R\bfileType\x88\x01\x01\x12\x18\n" +
 	"\aoptions\x18\a \x01(\fR\aoptions\x12\x1a\n" +
-	"\bmetadata\x18\b \x01(\fR\bmetadataB\t\n" +
+	"\bmetadata\x18\b \x01(\fR\bmetadata\x12 \n" +
+	"\tbody_text\x18\t \x01(\tH\x03R\bbodyText\x88\x01\x01\x12:\n" +
+	"\vattachments\x18\n" +
+	" \x03(\v2\x18.nexus.events.v1.FileRefR\vattachmentsB\t\n" +
 	"\a_bucketB\f\n" +
 	"\n" +
 	"_file_nameB\f\n" +
 	"\n" +
-	"_file_type\"\x87\x03\n" +
+	"_file_typeB\f\n" +
+	"\n" +
+	"_body_text\"l\n" +
+	"\aFileRef\x12\x16\n" +
+	"\x06bucket\x18\x01 \x01(\tR\x06bucket\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x1a\n" +
+	"\bfilename\x18\x03 \x01(\tR\bfilename\x12\x1b\n" +
+	"\tmime_type\x18\x04 \x01(\tR\bmimeType\"\xd4\x02\n" +
 	"\x18ArrayJobCompletedPayload\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12%\n" +
 	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\x12\x16\n" +
@@ -324,12 +502,23 @@ const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"\n" +
 	"confidence\x18\x05 \x01(\x01H\x00R\n" +
 	"confidence\x88\x01\x01\x12*\n" +
-	"\x11total_duration_ms\x18\x06 \x01(\x05R\x0ftotalDurationMs\x121\n" +
-	"\x12converted_file_key\x18\a \x01(\tH\x01R\x10convertedFileKey\x88\x01\x01\x127\n" +
-	"\x15converted_file_bucket\x18\b \x01(\tH\x02R\x13convertedFileBucket\x88\x01\x01B\r\n" +
-	"\v_confidenceB\x15\n" +
-	"\x13_converted_file_keyB\x18\n" +
-	"\x16_converted_file_bucket\"\xba\x01\n" +
+	"\x11total_duration_ms\x18\x06 \x01(\x05R\x0ftotalDurationMs\x12\\\n" +
+	"\x16attachment_extractions\x18\t \x03(\v2%.nexus.events.v1.AttachmentExtractionR\x15attachmentExtractionsB\r\n" +
+	"\v_confidenceJ\x04\b\a\x10\bJ\x04\b\b\x10\t\"\xe2\x02\n" +
+	"\x14AttachmentExtraction\x12#\n" +
+	"\rsource_bucket\x18\x01 \x01(\tR\fsourceBucket\x12\x1d\n" +
+	"\n" +
+	"source_key\x18\x02 \x01(\tR\tsourceKey\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12.\n" +
+	"\x10converted_bucket\x18\x04 \x01(\tH\x00R\x0fconvertedBucket\x88\x01\x01\x12(\n" +
+	"\rconverted_key\x18\x05 \x01(\tH\x01R\fconvertedKey\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"error_code\x18\x06 \x01(\tH\x02R\terrorCode\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\a \x01(\tH\x03R\ferrorMessage\x88\x01\x01B\x13\n" +
+	"\x11_converted_bucketB\x10\n" +
+	"\x0e_converted_keyB\r\n" +
+	"\v_error_codeB\x10\n" +
+	"\x0e_error_message\"\xba\x01\n" +
 	"\x15ArrayJobFailedPayload\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12%\n" +
 	"\x0ecorrelation_id\x18\x02 \x01(\tR\rcorrelationId\x12\x1d\n" +
@@ -351,18 +540,22 @@ func file_proto_nexus_events_v1_array_proto_rawDescGZIP() []byte {
 	return file_proto_nexus_events_v1_array_proto_rawDescData
 }
 
-var file_proto_nexus_events_v1_array_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_nexus_events_v1_array_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_proto_nexus_events_v1_array_proto_goTypes = []any{
 	(*ArrayProcessRequestPayload)(nil), // 0: nexus.events.v1.ArrayProcessRequestPayload
-	(*ArrayJobCompletedPayload)(nil),   // 1: nexus.events.v1.ArrayJobCompletedPayload
-	(*ArrayJobFailedPayload)(nil),      // 2: nexus.events.v1.ArrayJobFailedPayload
+	(*FileRef)(nil),                    // 1: nexus.events.v1.FileRef
+	(*ArrayJobCompletedPayload)(nil),   // 2: nexus.events.v1.ArrayJobCompletedPayload
+	(*AttachmentExtraction)(nil),       // 3: nexus.events.v1.AttachmentExtraction
+	(*ArrayJobFailedPayload)(nil),      // 4: nexus.events.v1.ArrayJobFailedPayload
 }
 var file_proto_nexus_events_v1_array_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: nexus.events.v1.ArrayProcessRequestPayload.attachments:type_name -> nexus.events.v1.FileRef
+	3, // 1: nexus.events.v1.ArrayJobCompletedPayload.attachment_extractions:type_name -> nexus.events.v1.AttachmentExtraction
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_proto_nexus_events_v1_array_proto_init() }
@@ -371,14 +564,15 @@ func file_proto_nexus_events_v1_array_proto_init() {
 		return
 	}
 	file_proto_nexus_events_v1_array_proto_msgTypes[0].OneofWrappers = []any{}
-	file_proto_nexus_events_v1_array_proto_msgTypes[1].OneofWrappers = []any{}
+	file_proto_nexus_events_v1_array_proto_msgTypes[2].OneofWrappers = []any{}
+	file_proto_nexus_events_v1_array_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_nexus_events_v1_array_proto_rawDesc), len(file_proto_nexus_events_v1_array_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
