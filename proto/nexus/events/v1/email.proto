@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nexus.events.v1;
 
-option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
 // Published when an email is first received by the system, before any processing.
 message EmailReceivedPayload {
@@ -11,4 +11,3 @@ message EmailReceivedPayload {
   bool has_attachment = 3;
   int32 attachment_count = 4;
 }
-

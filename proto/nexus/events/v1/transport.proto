@@ -1,0 +1,305 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
+
+message Money {
+	int64 amount = 1;
+	string currency = 2;
+}
+
+message Weights {
+  int64 gross = 1;
+  int64 tare = 2;
+  int64 net = 3;
+}
+
+message Dimensions {
+  int64 width = 1;
+  int64 length = 2;
+  int64 height = 3;
+}
+
+message TemperatureOptions {
+	int64 min_c = 1;
+    int64 max_c = 2;
+}
+
+message ContainerNumber {
+  string type = 1;
+  repeated string numbers = 2;
+}
+
+message PackageData {
+  string type = 1;
+  map<string, string> custom_fields = 2;
+  string label_id = 3;
+  repeated string markings = 4;
+}
+
+message RailWagonData {
+  string wagon_number = 1;
+  string owner_code = 2;
+  string wagon_type = 3;
+  int32 axle_count = 4;
+}
+
+message ContainerData {
+  string number = 1;
+  repeated ContainerNumber additional_numbers = 2;
+  bool vgm_verified = 3;
+  string hs_code_import = 4;
+  string hs_code_export = 5;
+  string container_type_group = 6;
+  repeated string commodity = 7;
+  bool oversized = 8;
+  Dimensions dimensions = 9;
+  Weights weights = 10;
+  Money rate = 11;
+  map<string, string> custom_fields = 12;
+  TemperatureOptions temperature = 13;
+  bool is_tank = 14;
+  bool has_equipment = 15;
+  string equipment = 16;
+  int32 cbm = 17;
+}
+
+message OrganizationLocation {
+  string name = 1;
+  string type = 2;
+  string address = 3;
+  string city = 4;
+  string postal_code = 5;
+  string country = 6;
+  string region = 7;
+  repeated string tms_references = 8;
+}
+
+message BillingLocation {
+  bool same_as_hq = 1;
+  string address = 2;
+  string city = 3;
+  string postal_code = 4;
+  string country = 5;
+  string region = 6;
+}
+
+message Organization {
+  string name = 1;
+  string legal_entity = 2;
+  string address = 3;
+  string city = 4;
+  string country = 5;
+  string region = 6;
+  string postal_code = 7;
+  string avatar_blob_id = 8;
+  string hq_location_id = 9;
+  string tenant_id = 10;
+  repeated string roles = 11;
+  repeated string tms_ref = 12;
+  BillingLocation billing_address = 13;
+  repeated OrganizationLocation locations = 14;
+}
+
+message FileExternalSystemID {
+  string id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  string deleted_at = 4;
+  string participant_id = 5;
+  string external_system_id = 6;
+  string value = 7;
+}
+
+message FileParticipantExternalSystemIDDTO {
+  string id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  string deleted_at = 4;
+  string file_id = 5;
+  string participant_id = 6;
+  string organization_id = 7;
+  string location_id = 8;
+  string tenant_id = 9;
+  string external_system_id = 10;
+  string value = 11;
+}
+
+message ParticipantMember {
+  string id = 1;
+  string participant_id = 2;
+  string user_id = 3;
+  string access = 4;
+  string role = 5;
+}
+
+message FileParticipantExternalSystemID {
+  string id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  string deleted_at = 4;
+  string file_id = 5;
+  string participant_id = 6;
+  string organization_id = 7;
+  string location_id = 8;
+  string tenant_id = 9;
+  string external_system_id = 10;
+  string value = 11;
+}
+
+message Participant {
+  string id = 1;
+  string file_id = 2;
+  string organization_id = 3;
+  string location_id = 4;
+  string role = 5;
+  string tms_ref = 6;
+  string file_tms_ref = 7;
+  repeated string contacts = 8;
+  repeated ParticipantMember members = 9;
+  repeated FileParticipantExternalSystemID external_system_ids = 10;
+  Organization organization = 11;
+}
+
+message Document {
+  string created_at = 1;
+  string updated_at = 2;
+  string file_id = 3;
+  string blob_id = 4;
+  string attachment_url = 5;
+  string uploaded_by = 6;
+  string file_name = 7;
+  string document_type = 8;
+  string description = 9;
+  string message_id = 10;
+  string source = 11;
+  string notification_id = 12;
+  string mime_type = 13;
+}
+
+message DangerousGoods {
+  string id = 1;
+  string description = 2;
+  string number = 3;
+  string class = 4;
+}
+
+message CargoUnit {
+  string id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  string deleted_at = 4;
+  string description = 5;
+  string parent_id = 6;
+  string file_id = 7;
+  string type = 8;
+  string stackable = 9;
+  bool fragile = 10;
+  string code = 11;
+
+  oneof attributes {
+    PackageData package = 12;
+    ContainerData container = 13;
+    RailWagonData rail_wagon = 14;
+  }
+
+  Weights weights = 15;
+  Dimensions dimensions = 16;
+  DangerousGoods dg = 17;
+  string dg_details = 18;
+  repeated CargoUnit children = 19;
+}
+
+message Number {
+  string file_id = 1;
+  string value = 2;
+  string type = 3;
+  string issued_as = 4;
+}
+
+message ContainerTypeScheduleRate {
+  string schedule_id = 1;
+  string container_type = 2;
+  string created_at = 3;
+  string updated_at = 4;
+}
+
+message Transshipment {
+  string schedule_id = 1;
+  string port = 2;
+  string estimated_time_arrival_utc = 3;
+  string estimated_time_departure_utc = 4;
+  string transport_mode = 5;
+  string vessel_name = 6;
+  string imo_number = 7;
+  string carrier_service_name = 8;
+  string voyage_number = 9;
+}
+
+message Schedule {
+  string file_id = 1;
+  string estimated_time_arrival_utc = 2;
+  string estimated_time_departure_utc = 3;
+  string carrier = 4;
+  string transport_mode = 5;
+  string vessel_name = 6;
+  string imo_number = 7;
+  string voyage_number = 8;
+  string all_in_rate = 9;
+  string carrier_so_number = 10;
+  string carrier_booking_number = 11;
+  string mbl_payment_terms = 12;
+  string contract_owner = 13;
+  string contract_number = 14;
+  string contract_id = 15;
+  string side_terms = 16;
+  string dem_det_details = 17;
+  string det_details = 18;
+  string dem_details = 19;
+  string vgm_cut_off_utc = 20;
+  string cy_cut_off_utc = 21;
+  string si_cut_off_utc = 22;
+  repeated ContainerTypeScheduleRate container_rates = 23;
+  repeated Transshipment transshipments = 24;
+  string status = 25;
+  string scac = 26;
+}
+
+message SeaFile {
+  string id = 1;
+  string parent_id = 2;
+  string nexus_id = 3;
+  string status = 4;
+  string mode = 5;
+  string created_by_tenant = 6;
+  string created_by_user = 7;
+  string initial_cargo_ready_date_utc = 8;
+  string planned_cargo_ready_date_utc = 9;
+  string actual_cargo_ready_date_utc = 10;
+  string booking_instructions = 11;
+  string place_of_receipt = 12;
+  string place_of_delivery = 13;
+  string estimated_time_departure_utc = 14;
+  string estimated_time_arrival_utc = 15;
+  string actual_time_departure_utc = 16;
+  string actual_time_arrival_utc = 17;
+  repeated Schedule schedules = 18;
+  repeated CargoUnit cargo = 19;
+  repeated SeaFile children = 20;
+  repeated Number numbers = 21;
+  string ams_filing_date = 22;
+  repeated Document documents = 23;
+  repeated Participant participants = 24;
+  repeated FileExternalSystemID file_external_system_id = 25;
+  string incoterm = 26;
+  string latest_estimated_time_departure_utc = 27;
+  string port_of_loading = 28;
+  string port_of_destination = 29;
+  string type = 30;
+  string latest_arrival_at_pod_utc = 31;
+  string isf_filling_date_utc = 32;
+  string bill_of_lading_number = 33;
+  string house_bill_of_lading_number = 34;
+  string house_bill_of_lading_number_issued_as = 35;
+}
