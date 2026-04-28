@@ -98,7 +98,7 @@ const file_proto_nexus_events_v1_common_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1b\n" +
-	"\ttenant_id\x18\x04 \x01(\tR\btenantIdBIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"\ttenant_id\x18\x04 \x01(\tR\btenantIdBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_common_proto_rawDescOnce sync.Once

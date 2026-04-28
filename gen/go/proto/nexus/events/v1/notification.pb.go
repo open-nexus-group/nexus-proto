@@ -126,7 +126,7 @@ const file_proto_nexus_events_v1_notification_proto_rawDesc = "" +
 	"\x05level\x18\x04 \x01(\x05R\x05level\x12\x16\n" +
 	"\x06status\x18\x05 \x01(\x05R\x06status\x12\x18\n" +
 	"\acontent\x18\x06 \x01(\tR\acontent\x12\x1a\n" +
-	"\bmetadata\x18\b \x01(\fR\bmetadataBIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"\bmetadata\x18\b \x01(\fR\bmetadataBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_notification_proto_rawDescOnce sync.Once

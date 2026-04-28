@@ -108,7 +108,7 @@ const file_proto_nexus_events_v1_transmission_proto_rawDesc = "" +
 	"is_success\x18\x02 \x01(\bR\tisSuccess\x12,\n" +
 	"\x12external_system_id\x18\x03 \x01(\tR\x10externalSystemId\x12.\n" +
 	"\x13external_system_uri\x18\x04 \x01(\tR\x11externalSystemUri\x12\x16\n" +
-	"\x06errors\x18\x05 \x03(\tR\x06errorsBIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"\x06errors\x18\x05 \x03(\tR\x06errorsBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_transmission_proto_rawDescOnce sync.Once

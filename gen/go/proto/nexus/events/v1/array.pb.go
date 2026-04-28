@@ -337,7 +337,7 @@ const file_proto_nexus_events_v1_array_proto_rawDesc = "" +
 	"error_code\x18\x03 \x01(\tR\terrorCode\x12#\n" +
 	"\rerror_message\x18\x04 \x01(\tR\ferrorMessage\x12\x1f\n" +
 	"\vretry_count\x18\x05 \x01(\x05R\n" +
-	"retryCountBIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"retryCountBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_array_proto_rawDescOnce sync.Once

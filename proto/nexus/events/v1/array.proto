@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package nexus.events.v1;
 
-option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
 message ArrayProcessRequestPayload {
     string correlation_id = 1;

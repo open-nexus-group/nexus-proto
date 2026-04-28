@@ -6,7 +6,7 @@ package nexus.events.v1;
 import "proto/nexus/events/v1/common.proto";
 import "google/protobuf/struct.proto";
 
-option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1";
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
 message UserConfigUpdatedPayload {
   UserInfo user_info = 1;

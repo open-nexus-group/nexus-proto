@@ -102,7 +102,7 @@ const file_proto_nexus_events_v1_userconfig_proto_rawDesc = "" +
 	"\vbefore_json\x18\x03 \x01(\v2\x16.google.protobuf.ValueR\n" +
 	"beforeJson\x125\n" +
 	"\n" +
-	"after_json\x18\x04 \x01(\v2\x16.google.protobuf.ValueR\tafterJsonBIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"after_json\x18\x04 \x01(\v2\x16.google.protobuf.ValueR\tafterJsonBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_userconfig_proto_rawDescOnce sync.Once

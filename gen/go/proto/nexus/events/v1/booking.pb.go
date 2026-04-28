@@ -123,7 +123,7 @@ func (x BookingCreationFailedPayload_FailureReason) Number() protoreflect.EnumNu
 
 // Deprecated: Use BookingCreationFailedPayload_FailureReason.Descriptor instead.
 func (BookingCreationFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7, 0}
 }
 
 type BookingProcessingFailedPayload_FailureReason int32
@@ -184,7 +184,7 @@ func (x BookingProcessingFailedPayload_FailureReason) Number() protoreflect.Enum
 
 // Deprecated: Use BookingProcessingFailedPayload_FailureReason.Descriptor instead.
 func (BookingProcessingFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{9, 0}
 }
 
 type BookingUpdateFailedPayload_FailureReason int32
@@ -227,7 +227,7 @@ func (x BookingUpdateFailedPayload_FailureReason) Number() protoreflect.EnumNumb
 
 // Deprecated: Use BookingUpdateFailedPayload_FailureReason.Descriptor instead.
 func (BookingUpdateFailedPayload_FailureReason) EnumDescriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11, 0}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{13, 0}
 }
 
 type BookingNoteReference struct {
@@ -348,6 +348,8 @@ type BookingNoteContainer struct {
 	CreatedAt       string                 `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt       string                 `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	DeletedAt       string                 `protobuf:"bytes,8,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	ContainerNumber string                 `protobuf:"bytes,9,opt,name=container_number,json=containerNumber,proto3" json:"container_number,omitempty"`
+	SealNumber      string                 `protobuf:"bytes,10,opt,name=seal_number,json=sealNumber,proto3" json:"seal_number,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -438,26 +440,41 @@ func (x *BookingNoteContainer) GetDeletedAt() string {
 	return ""
 }
 
+func (x *BookingNoteContainer) GetContainerNumber() string {
+	if x != nil {
+		return x.ContainerNumber
+	}
+	return ""
+}
+
+func (x *BookingNoteContainer) GetSealNumber() string {
+	if x != nil {
+		return x.SealNumber
+	}
+	return ""
+}
+
 type BookingParticipant struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	BookingNoteId string                 `protobuf:"bytes,2,opt,name=booking_note_id,json=bookingNoteId,proto3" json:"booking_note_id,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	Telephone     string                 `protobuf:"bytes,6,opt,name=telephone,proto3" json:"telephone,omitempty"`
-	Fax           string                 `protobuf:"bytes,7,opt,name=fax,proto3" json:"fax,omitempty"`
-	Email         string                 `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`
-	Eori          string                 `protobuf:"bytes,9,opt,name=eori,proto3" json:"eori,omitempty"`
-	VatNumber     string                 `protobuf:"bytes,10,opt,name=vat_number,json=vatNumber,proto3" json:"vat_number,omitempty"`
-	ContactPerson string                 `protobuf:"bytes,11,opt,name=contact_person,json=contactPerson,proto3" json:"contact_person,omitempty"`
-	CountryCode   string                 `protobuf:"bytes,12,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
-	ReferenceId   string                 `protobuf:"bytes,13,opt,name=reference_id,json=referenceId,proto3" json:"reference_id,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     string                 `protobuf:"bytes,16,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	Id                      string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	BookingNoteId           string                 `protobuf:"bytes,2,opt,name=booking_note_id,json=bookingNoteId,proto3" json:"booking_note_id,omitempty"`
+	Type                    string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	Name                    string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Address                 string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
+	Telephone               string                 `protobuf:"bytes,6,opt,name=telephone,proto3" json:"telephone,omitempty"`
+	Fax                     string                 `protobuf:"bytes,7,opt,name=fax,proto3" json:"fax,omitempty"`
+	Email                   string                 `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`
+	Eori                    string                 `protobuf:"bytes,9,opt,name=eori,proto3" json:"eori,omitempty"`
+	VatNumber               string                 `protobuf:"bytes,10,opt,name=vat_number,json=vatNumber,proto3" json:"vat_number,omitempty"`
+	ContactPerson           string                 `protobuf:"bytes,11,opt,name=contact_person,json=contactPerson,proto3" json:"contact_person,omitempty"`
+	CountryCode             string                 `protobuf:"bytes,12,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	ReferenceId             string                 `protobuf:"bytes,13,opt,name=reference_id,json=referenceId,proto3" json:"reference_id,omitempty"`
+	CreatedAt               string                 `protobuf:"bytes,14,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt               string                 `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt               string                 `protobuf:"bytes,16,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	DestinationTmsReference string                 `protobuf:"bytes,17,opt,name=destination_tms_reference,json=destinationTmsReference,proto3" json:"destination_tms_reference,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *BookingParticipant) Reset() {
@@ -598,6 +615,13 @@ func (x *BookingParticipant) GetUpdatedAt() string {
 func (x *BookingParticipant) GetDeletedAt() string {
 	if x != nil {
 		return x.DeletedAt
+	}
+	return ""
+}
+
+func (x *BookingParticipant) GetDestinationTmsReference() string {
+	if x != nil {
+		return x.DestinationTmsReference
 	}
 	return ""
 }
@@ -798,57 +822,236 @@ func (x *BookingNoteItem) GetDeletedAt() string {
 	return ""
 }
 
+type BookingNoteVoyage struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	VoyageNumber     string                 `protobuf:"bytes,1,opt,name=voyage_number,json=voyageNumber,proto3" json:"voyage_number,omitempty"`
+	VesselName       string                 `protobuf:"bytes,2,opt,name=vessel_name,json=vesselName,proto3" json:"vessel_name,omitempty"`
+	VesselImo        string                 `protobuf:"bytes,3,opt,name=vessel_imo,json=vesselImo,proto3" json:"vessel_imo,omitempty"`
+	ShippingLineScac string                 `protobuf:"bytes,4,opt,name=shipping_line_scac,json=shippingLineScac,proto3" json:"shipping_line_scac,omitempty"`
+	DeparturePort    string                 `protobuf:"bytes,5,opt,name=departure_port,json=departurePort,proto3" json:"departure_port,omitempty"`
+	DestinationPort  string                 `protobuf:"bytes,6,opt,name=destination_port,json=destinationPort,proto3" json:"destination_port,omitempty"`
+	Etd              string                 `protobuf:"bytes,7,opt,name=etd,proto3" json:"etd,omitempty"`
+	Eta              string                 `protobuf:"bytes,8,opt,name=eta,proto3" json:"eta,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *BookingNoteVoyage) Reset() {
+	*x = BookingNoteVoyage{}
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BookingNoteVoyage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BookingNoteVoyage) ProtoMessage() {}
+
+func (x *BookingNoteVoyage) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BookingNoteVoyage.ProtoReflect.Descriptor instead.
+func (*BookingNoteVoyage) Descriptor() ([]byte, []int) {
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *BookingNoteVoyage) GetVoyageNumber() string {
+	if x != nil {
+		return x.VoyageNumber
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetVesselName() string {
+	if x != nil {
+		return x.VesselName
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetVesselImo() string {
+	if x != nil {
+		return x.VesselImo
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetShippingLineScac() string {
+	if x != nil {
+		return x.ShippingLineScac
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetDeparturePort() string {
+	if x != nil {
+		return x.DeparturePort
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetDestinationPort() string {
+	if x != nil {
+		return x.DestinationPort
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetEtd() string {
+	if x != nil {
+		return x.Etd
+	}
+	return ""
+}
+
+func (x *BookingNoteVoyage) GetEta() string {
+	if x != nil {
+		return x.Eta
+	}
+	return ""
+}
+
+type BookingNoteAttachment struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FileName      string                 `protobuf:"bytes,1,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
+	DisplayName   string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	DocumentType  string                 `protobuf:"bytes,3,opt,name=document_type,json=documentType,proto3" json:"document_type,omitempty"`
+	MimeType      string                 `protobuf:"bytes,4,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
+	ContentBase64 string                 `protobuf:"bytes,5,opt,name=content_base64,json=contentBase64,proto3" json:"content_base64,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BookingNoteAttachment) Reset() {
+	*x = BookingNoteAttachment{}
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BookingNoteAttachment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BookingNoteAttachment) ProtoMessage() {}
+
+func (x *BookingNoteAttachment) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BookingNoteAttachment.ProtoReflect.Descriptor instead.
+func (*BookingNoteAttachment) Descriptor() ([]byte, []int) {
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *BookingNoteAttachment) GetFileName() string {
+	if x != nil {
+		return x.FileName
+	}
+	return ""
+}
+
+func (x *BookingNoteAttachment) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *BookingNoteAttachment) GetDocumentType() string {
+	if x != nil {
+		return x.DocumentType
+	}
+	return ""
+}
+
+func (x *BookingNoteAttachment) GetMimeType() string {
+	if x != nil {
+		return x.MimeType
+	}
+	return ""
+}
+
+func (x *BookingNoteAttachment) GetContentBase64() string {
+	if x != nil {
+		return x.ContentBase64
+	}
+	return ""
+}
+
 type BookingNote struct {
-	state                        protoimpl.MessageState  `protogen:"open.v1"`
-	Id                           string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	DocumentType                 string                  `protobuf:"bytes,2,opt,name=document_type,json=documentType,proto3" json:"document_type,omitempty"`
-	PaymentTerms                 string                  `protobuf:"bytes,3,opt,name=payment_terms,json=paymentTerms,proto3" json:"payment_terms,omitempty"`
-	Incoterms                    string                  `protobuf:"bytes,4,opt,name=incoterms,proto3" json:"incoterms,omitempty"`
-	OrderType                    string                  `protobuf:"bytes,5,opt,name=order_type,json=orderType,proto3" json:"order_type,omitempty"`
-	PriorityShipment             bool                    `protobuf:"varint,6,opt,name=priority_shipment,json=priorityShipment,proto3" json:"priority_shipment,omitempty"`
-	FinalDestinationDeliveryDate string                  `protobuf:"bytes,7,opt,name=final_destination_delivery_date,json=finalDestinationDeliveryDate,proto3" json:"final_destination_delivery_date,omitempty"`
-	PlaceOfDelivery              string                  `protobuf:"bytes,8,opt,name=place_of_delivery,json=placeOfDelivery,proto3" json:"place_of_delivery,omitempty"`
-	FinalDestination             string                  `protobuf:"bytes,9,opt,name=final_destination,json=finalDestination,proto3" json:"final_destination,omitempty"`
-	ExportLicenceNo              string                  `protobuf:"bytes,10,opt,name=export_licence_no,json=exportLicenceNo,proto3" json:"export_licence_no,omitempty"`
-	SoNumber                     string                  `protobuf:"bytes,11,opt,name=so_number,json=soNumber,proto3" json:"so_number,omitempty"`
-	PlaceOfReceipt               string                  `protobuf:"bytes,12,opt,name=place_of_receipt,json=placeOfReceipt,proto3" json:"place_of_receipt,omitempty"`
-	ConsolCodeNo                 string                  `protobuf:"bytes,13,opt,name=consol_code_no,json=consolCodeNo,proto3" json:"consol_code_no,omitempty"`
-	FreightPayableNos            string                  `protobuf:"bytes,14,opt,name=freight_payable_nos,json=freightPayableNos,proto3" json:"freight_payable_nos,omitempty"`
-	LoadingPort                  string                  `protobuf:"bytes,15,opt,name=loading_port,json=loadingPort,proto3" json:"loading_port,omitempty"`
-	DestinationPort              string                  `protobuf:"bytes,16,opt,name=destination_port,json=destinationPort,proto3" json:"destination_port,omitempty"`
-	CargoReadyDate               string                  `protobuf:"bytes,17,opt,name=cargo_ready_date,json=cargoReadyDate,proto3" json:"cargo_ready_date,omitempty"`
-	CarrierName                  string                  `protobuf:"bytes,18,opt,name=carrier_name,json=carrierName,proto3" json:"carrier_name,omitempty"`
-	DepartureDate                string                  `protobuf:"bytes,19,opt,name=departure_date,json=departureDate,proto3" json:"departure_date,omitempty"`
-	ExternalSystemId             string                  `protobuf:"bytes,20,opt,name=external_system_id,json=externalSystemId,proto3" json:"external_system_id,omitempty"`
-	DocumentPath                 string                  `protobuf:"bytes,21,opt,name=document_path,json=documentPath,proto3" json:"document_path,omitempty"`
-	DocumentOriginalName         string                  `protobuf:"bytes,22,opt,name=document_original_name,json=documentOriginalName,proto3" json:"document_original_name,omitempty"`
-	IsExtracted                  bool                    `protobuf:"varint,23,opt,name=is_extracted,json=isExtracted,proto3" json:"is_extracted,omitempty"`
-	ExtractionConfidence         float64                 `protobuf:"fixed64,24,opt,name=extraction_confidence,json=extractionConfidence,proto3" json:"extraction_confidence,omitempty"`
-	ExtractionId                 string                  `protobuf:"bytes,25,opt,name=extraction_id,json=extractionId,proto3" json:"extraction_id,omitempty"`
-	Status                       string                  `protobuf:"bytes,26,opt,name=status,proto3" json:"status,omitempty"`
-	ApprovedAt                   string                  `protobuf:"bytes,27,opt,name=approved_at,json=approvedAt,proto3" json:"approved_at,omitempty"`
-	RejectedAt                   string                  `protobuf:"bytes,28,opt,name=rejected_at,json=rejectedAt,proto3" json:"rejected_at,omitempty"`
-	ReviewedById                 string                  `protobuf:"bytes,29,opt,name=reviewedBy_id,json=reviewedById,proto3" json:"reviewedBy_id,omitempty"`
-	CreatedById                  string                  `protobuf:"bytes,30,opt,name=createdBy_id,json=createdById,proto3" json:"createdBy_id,omitempty"`
-	CreatedAt                    string                  `protobuf:"bytes,31,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt                    string                  `protobuf:"bytes,32,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt                    string                  `protobuf:"bytes,33,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
-	Marks                        string                  `protobuf:"bytes,34,opt,name=marks,proto3" json:"marks,omitempty"`
-	TotalGrossWeightKgs          float64                 `protobuf:"fixed64,35,opt,name=total_gross_weight_kgs,json=totalGrossWeightKgs,proto3" json:"total_gross_weight_kgs,omitempty"`
-	TotalMeasurementCbm          float64                 `protobuf:"fixed64,36,opt,name=total_measurement_cbm,json=totalMeasurementCbm,proto3" json:"total_measurement_cbm,omitempty"`
-	Items                        []*BookingNoteItem      `protobuf:"bytes,37,rep,name=Items,proto3" json:"Items,omitempty"`
-	Containers                   []*BookingNoteContainer `protobuf:"bytes,38,rep,name=Containers,proto3" json:"Containers,omitempty"`
-	Participants                 []*BookingParticipant   `protobuf:"bytes,39,rep,name=Participants,proto3" json:"Participants,omitempty"`
-	RequestedDcdDate             string                  `protobuf:"bytes,40,opt,name=requested_dcd_date,json=requestedDcdDate,proto3" json:"requested_dcd_date,omitempty"`
-	LatestShippingDate           string                  `protobuf:"bytes,41,opt,name=latest_shipping_date,json=latestShippingDate,proto3" json:"latest_shipping_date,omitempty"`
-	References                   []*BookingNoteReference `protobuf:"bytes,42,rep,name=References,proto3" json:"References,omitempty"`
+	state                        protoimpl.MessageState   `protogen:"open.v1"`
+	Id                           string                   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	DocumentType                 string                   `protobuf:"bytes,2,opt,name=document_type,json=documentType,proto3" json:"document_type,omitempty"`
+	PaymentTerms                 string                   `protobuf:"bytes,3,opt,name=payment_terms,json=paymentTerms,proto3" json:"payment_terms,omitempty"`
+	Incoterms                    string                   `protobuf:"bytes,4,opt,name=incoterms,proto3" json:"incoterms,omitempty"`
+	OrderType                    string                   `protobuf:"bytes,5,opt,name=order_type,json=orderType,proto3" json:"order_type,omitempty"`
+	PriorityShipment             bool                     `protobuf:"varint,6,opt,name=priority_shipment,json=priorityShipment,proto3" json:"priority_shipment,omitempty"`
+	FinalDestinationDeliveryDate string                   `protobuf:"bytes,7,opt,name=final_destination_delivery_date,json=finalDestinationDeliveryDate,proto3" json:"final_destination_delivery_date,omitempty"`
+	PlaceOfDelivery              string                   `protobuf:"bytes,8,opt,name=place_of_delivery,json=placeOfDelivery,proto3" json:"place_of_delivery,omitempty"`
+	FinalDestination             string                   `protobuf:"bytes,9,opt,name=final_destination,json=finalDestination,proto3" json:"final_destination,omitempty"`
+	ExportLicenceNo              string                   `protobuf:"bytes,10,opt,name=export_licence_no,json=exportLicenceNo,proto3" json:"export_licence_no,omitempty"`
+	SoNumber                     string                   `protobuf:"bytes,11,opt,name=so_number,json=soNumber,proto3" json:"so_number,omitempty"`
+	PlaceOfReceipt               string                   `protobuf:"bytes,12,opt,name=place_of_receipt,json=placeOfReceipt,proto3" json:"place_of_receipt,omitempty"`
+	ConsolCodeNo                 string                   `protobuf:"bytes,13,opt,name=consol_code_no,json=consolCodeNo,proto3" json:"consol_code_no,omitempty"`
+	FreightPayableNos            string                   `protobuf:"bytes,14,opt,name=freight_payable_nos,json=freightPayableNos,proto3" json:"freight_payable_nos,omitempty"`
+	LoadingPort                  string                   `protobuf:"bytes,15,opt,name=loading_port,json=loadingPort,proto3" json:"loading_port,omitempty"`
+	DestinationPort              string                   `protobuf:"bytes,16,opt,name=destination_port,json=destinationPort,proto3" json:"destination_port,omitempty"`
+	CargoReadyDate               string                   `protobuf:"bytes,17,opt,name=cargo_ready_date,json=cargoReadyDate,proto3" json:"cargo_ready_date,omitempty"`
+	CarrierName                  string                   `protobuf:"bytes,18,opt,name=carrier_name,json=carrierName,proto3" json:"carrier_name,omitempty"`
+	DepartureDate                string                   `protobuf:"bytes,19,opt,name=departure_date,json=departureDate,proto3" json:"departure_date,omitempty"`
+	ExternalSystemId             string                   `protobuf:"bytes,20,opt,name=external_system_id,json=externalSystemId,proto3" json:"external_system_id,omitempty"`
+	DocumentPath                 string                   `protobuf:"bytes,21,opt,name=document_path,json=documentPath,proto3" json:"document_path,omitempty"`
+	DocumentOriginalName         string                   `protobuf:"bytes,22,opt,name=document_original_name,json=documentOriginalName,proto3" json:"document_original_name,omitempty"`
+	IsExtracted                  bool                     `protobuf:"varint,23,opt,name=is_extracted,json=isExtracted,proto3" json:"is_extracted,omitempty"`
+	ExtractionConfidence         float64                  `protobuf:"fixed64,24,opt,name=extraction_confidence,json=extractionConfidence,proto3" json:"extraction_confidence,omitempty"`
+	ExtractionId                 string                   `protobuf:"bytes,25,opt,name=extraction_id,json=extractionId,proto3" json:"extraction_id,omitempty"`
+	Status                       string                   `protobuf:"bytes,26,opt,name=status,proto3" json:"status,omitempty"`
+	ApprovedAt                   string                   `protobuf:"bytes,27,opt,name=approved_at,json=approvedAt,proto3" json:"approved_at,omitempty"`
+	RejectedAt                   string                   `protobuf:"bytes,28,opt,name=rejected_at,json=rejectedAt,proto3" json:"rejected_at,omitempty"`
+	ReviewedById                 string                   `protobuf:"bytes,29,opt,name=reviewedBy_id,json=reviewedById,proto3" json:"reviewedBy_id,omitempty"`
+	CreatedById                  string                   `protobuf:"bytes,30,opt,name=createdBy_id,json=createdById,proto3" json:"createdBy_id,omitempty"`
+	CreatedAt                    string                   `protobuf:"bytes,31,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt                    string                   `protobuf:"bytes,32,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt                    string                   `protobuf:"bytes,33,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Marks                        string                   `protobuf:"bytes,34,opt,name=marks,proto3" json:"marks,omitempty"`
+	TotalGrossWeightKgs          float64                  `protobuf:"fixed64,35,opt,name=total_gross_weight_kgs,json=totalGrossWeightKgs,proto3" json:"total_gross_weight_kgs,omitempty"`
+	TotalMeasurementCbm          float64                  `protobuf:"fixed64,36,opt,name=total_measurement_cbm,json=totalMeasurementCbm,proto3" json:"total_measurement_cbm,omitempty"`
+	Items                        []*BookingNoteItem       `protobuf:"bytes,37,rep,name=Items,proto3" json:"Items,omitempty"`
+	Containers                   []*BookingNoteContainer  `protobuf:"bytes,38,rep,name=Containers,proto3" json:"Containers,omitempty"`
+	Participants                 []*BookingParticipant    `protobuf:"bytes,39,rep,name=Participants,proto3" json:"Participants,omitempty"`
+	RequestedDcdDate             string                   `protobuf:"bytes,40,opt,name=requested_dcd_date,json=requestedDcdDate,proto3" json:"requested_dcd_date,omitempty"`
+	LatestShippingDate           string                   `protobuf:"bytes,41,opt,name=latest_shipping_date,json=latestShippingDate,proto3" json:"latest_shipping_date,omitempty"`
+	References                   []*BookingNoteReference  `protobuf:"bytes,42,rep,name=References,proto3" json:"References,omitempty"`
+	Voyages                      []*BookingNoteVoyage     `protobuf:"bytes,43,rep,name=Voyages,proto3" json:"Voyages,omitempty"`
+	Attachments                  []*BookingNoteAttachment `protobuf:"bytes,44,rep,name=Attachments,proto3" json:"Attachments,omitempty"`
+	ServiceLevel                 string                   `protobuf:"bytes,45,opt,name=service_level,json=serviceLevel,proto3" json:"service_level,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
 
 func (x *BookingNote) Reset() {
 	*x = BookingNote{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -860,7 +1063,7 @@ func (x *BookingNote) String() string {
 func (*BookingNote) ProtoMessage() {}
 
 func (x *BookingNote) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[4]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -873,7 +1076,7 @@ func (x *BookingNote) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingNote.ProtoReflect.Descriptor instead.
 func (*BookingNote) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{4}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *BookingNote) GetId() string {
@@ -1170,6 +1373,27 @@ func (x *BookingNote) GetReferences() []*BookingNoteReference {
 	return nil
 }
 
+func (x *BookingNote) GetVoyages() []*BookingNoteVoyage {
+	if x != nil {
+		return x.Voyages
+	}
+	return nil
+}
+
+func (x *BookingNote) GetAttachments() []*BookingNoteAttachment {
+	if x != nil {
+		return x.Attachments
+	}
+	return nil
+}
+
+func (x *BookingNote) GetServiceLevel() string {
+	if x != nil {
+		return x.ServiceLevel
+	}
+	return ""
+}
+
 type BookingCreationFailedPayload struct {
 	state         protoimpl.MessageState                     `protogen:"open.v1"`
 	BookingId     string                                     `protobuf:"bytes,1,opt,name=booking_id,json=bookingId,proto3" json:"booking_id,omitempty"`
@@ -1182,7 +1406,7 @@ type BookingCreationFailedPayload struct {
 
 func (x *BookingCreationFailedPayload) Reset() {
 	*x = BookingCreationFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1194,7 +1418,7 @@ func (x *BookingCreationFailedPayload) String() string {
 func (*BookingCreationFailedPayload) ProtoMessage() {}
 
 func (x *BookingCreationFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[5]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1207,7 +1431,7 @@ func (x *BookingCreationFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingCreationFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingCreationFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{5}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BookingCreationFailedPayload) GetBookingId() string {
@@ -1249,7 +1473,7 @@ type BookingCreatedPayload struct {
 
 func (x *BookingCreatedPayload) Reset() {
 	*x = BookingCreatedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1261,7 +1485,7 @@ func (x *BookingCreatedPayload) String() string {
 func (*BookingCreatedPayload) ProtoMessage() {}
 
 func (x *BookingCreatedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[6]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1274,7 +1498,7 @@ func (x *BookingCreatedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingCreatedPayload.ProtoReflect.Descriptor instead.
 func (*BookingCreatedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{6}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BookingCreatedPayload) GetBookingId() string {
@@ -1310,7 +1534,7 @@ type BookingProcessingFailedPayload struct {
 
 func (x *BookingProcessingFailedPayload) Reset() {
 	*x = BookingProcessingFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1322,7 +1546,7 @@ func (x *BookingProcessingFailedPayload) String() string {
 func (*BookingProcessingFailedPayload) ProtoMessage() {}
 
 func (x *BookingProcessingFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[7]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1335,7 +1559,7 @@ func (x *BookingProcessingFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingProcessingFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingProcessingFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{7}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BookingProcessingFailedPayload) GetBookingId() string {
@@ -1377,7 +1601,7 @@ type BookingProcessedPayload struct {
 
 func (x *BookingProcessedPayload) Reset() {
 	*x = BookingProcessedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1389,7 +1613,7 @@ func (x *BookingProcessedPayload) String() string {
 func (*BookingProcessedPayload) ProtoMessage() {}
 
 func (x *BookingProcessedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[8]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1402,7 +1626,7 @@ func (x *BookingProcessedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingProcessedPayload.ProtoReflect.Descriptor instead.
 func (*BookingProcessedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{8}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BookingProcessedPayload) GetBookingId() string {
@@ -1439,7 +1663,7 @@ type BookingFieldAmendedPayload struct {
 
 func (x *BookingFieldAmendedPayload) Reset() {
 	*x = BookingFieldAmendedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1451,7 +1675,7 @@ func (x *BookingFieldAmendedPayload) String() string {
 func (*BookingFieldAmendedPayload) ProtoMessage() {}
 
 func (x *BookingFieldAmendedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[9]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1464,7 +1688,7 @@ func (x *BookingFieldAmendedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingFieldAmendedPayload.ProtoReflect.Descriptor instead.
 func (*BookingFieldAmendedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{9}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *BookingFieldAmendedPayload) GetBookingId() string {
@@ -1518,7 +1742,7 @@ type BookingUpdatedPayload struct {
 
 func (x *BookingUpdatedPayload) Reset() {
 	*x = BookingUpdatedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1530,7 +1754,7 @@ func (x *BookingUpdatedPayload) String() string {
 func (*BookingUpdatedPayload) ProtoMessage() {}
 
 func (x *BookingUpdatedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[10]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1543,7 +1767,7 @@ func (x *BookingUpdatedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingUpdatedPayload.ProtoReflect.Descriptor instead.
 func (*BookingUpdatedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{10}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *BookingUpdatedPayload) GetBookingId() string {
@@ -1585,7 +1809,7 @@ type BookingUpdateFailedPayload struct {
 
 func (x *BookingUpdateFailedPayload) Reset() {
 	*x = BookingUpdateFailedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1597,7 +1821,7 @@ func (x *BookingUpdateFailedPayload) String() string {
 func (*BookingUpdateFailedPayload) ProtoMessage() {}
 
 func (x *BookingUpdateFailedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[11]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1610,7 +1834,7 @@ func (x *BookingUpdateFailedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingUpdateFailedPayload.ProtoReflect.Descriptor instead.
 func (*BookingUpdateFailedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{11}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *BookingUpdateFailedPayload) GetBookingId() string {
@@ -1644,7 +1868,7 @@ type BookingApprovedPayload struct {
 
 func (x *BookingApprovedPayload) Reset() {
 	*x = BookingApprovedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1656,7 +1880,7 @@ func (x *BookingApprovedPayload) String() string {
 func (*BookingApprovedPayload) ProtoMessage() {}
 
 func (x *BookingApprovedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[12]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1669,7 +1893,7 @@ func (x *BookingApprovedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingApprovedPayload.ProtoReflect.Descriptor instead.
 func (*BookingApprovedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{12}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *BookingApprovedPayload) GetBookingId() string {
@@ -1696,7 +1920,7 @@ type BookingRejectedPayload struct {
 
 func (x *BookingRejectedPayload) Reset() {
 	*x = BookingRejectedPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1708,7 +1932,7 @@ func (x *BookingRejectedPayload) String() string {
 func (*BookingRejectedPayload) ProtoMessage() {}
 
 func (x *BookingRejectedPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[13]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1721,7 +1945,7 @@ func (x *BookingRejectedPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingRejectedPayload.ProtoReflect.Descriptor instead.
 func (*BookingRejectedPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{13}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *BookingRejectedPayload) GetBookingId() string {
@@ -1748,7 +1972,7 @@ type BookingForwardPayload struct {
 
 func (x *BookingForwardPayload) Reset() {
 	*x = BookingForwardPayload{}
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1760,7 +1984,7 @@ func (x *BookingForwardPayload) String() string {
 func (*BookingForwardPayload) ProtoMessage() {}
 
 func (x *BookingForwardPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[14]
+	mi := &file_proto_nexus_events_v1_booking_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1773,7 +1997,7 @@ func (x *BookingForwardPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookingForwardPayload.ProtoReflect.Descriptor instead.
 func (*BookingForwardPayload) Descriptor() ([]byte, []int) {
-	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{14}
+	return file_proto_nexus_events_v1_booking_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *BookingForwardPayload) GetBookingNote() *BookingNote {
@@ -1807,7 +2031,7 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\b \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\tR\tdeletedAt\"\x8f\x02\n" +
+	"deleted_at\x18\t \x01(\tR\tdeletedAt\"\xdb\x02\n" +
 	"\x14BookingNoteContainer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12%\n" +
@@ -1819,7 +2043,11 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\a \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"deleted_at\x18\b \x01(\tR\tdeletedAt\"\xd1\x03\n" +
+	"deleted_at\x18\b \x01(\tR\tdeletedAt\x12)\n" +
+	"\x10container_number\x18\t \x01(\tR\x0fcontainerNumber\x12\x1f\n" +
+	"\vseal_number\x18\n" +
+	" \x01(\tR\n" +
+	"sealNumber\"\x8d\x04\n" +
 	"\x12BookingParticipant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12\x12\n" +
@@ -1841,7 +2069,8 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x0f \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"deleted_at\x18\x10 \x01(\tR\tdeletedAt\"\xcb\x05\n" +
+	"deleted_at\x18\x10 \x01(\tR\tdeletedAt\x12:\n" +
+	"\x19destination_tms_reference\x18\x11 \x01(\tR\x17destinationTmsReference\"\xcb\x05\n" +
 	"\x0fBookingNoteItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12\x0e\n" +
@@ -1868,7 +2097,24 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x13 \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"deleted_at\x18\x14 \x01(\tR\tdeletedAt\"\xef\r\n" +
+	"deleted_at\x18\x14 \x01(\tR\tdeletedAt\"\x9c\x02\n" +
+	"\x11BookingNoteVoyage\x12#\n" +
+	"\rvoyage_number\x18\x01 \x01(\tR\fvoyageNumber\x12\x1f\n" +
+	"\vvessel_name\x18\x02 \x01(\tR\n" +
+	"vesselName\x12\x1d\n" +
+	"\n" +
+	"vessel_imo\x18\x03 \x01(\tR\tvesselImo\x12,\n" +
+	"\x12shipping_line_scac\x18\x04 \x01(\tR\x10shippingLineScac\x12%\n" +
+	"\x0edeparture_port\x18\x05 \x01(\tR\rdeparturePort\x12)\n" +
+	"\x10destination_port\x18\x06 \x01(\tR\x0fdestinationPort\x12\x10\n" +
+	"\x03etd\x18\a \x01(\tR\x03etd\x12\x10\n" +
+	"\x03eta\x18\b \x01(\tR\x03eta\"\xc0\x01\n" +
+	"\x15BookingNoteAttachment\x12\x1b\n" +
+	"\tfile_name\x18\x01 \x01(\tR\bfileName\x12!\n" +
+	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12#\n" +
+	"\rdocument_type\x18\x03 \x01(\tR\fdocumentType\x12\x1b\n" +
+	"\tmime_type\x18\x04 \x01(\tR\bmimeType\x12%\n" +
+	"\x0econtent_base64\x18\x05 \x01(\tR\rcontentBase64\"\x9c\x0f\n" +
 	"\vBookingNote\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12#\n" +
@@ -1922,7 +2168,10 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\x14latest_shipping_date\x18) \x01(\tR\x12latestShippingDate\x12E\n" +
 	"\n" +
 	"References\x18* \x03(\v2%.nexus.events.v1.BookingNoteReferenceR\n" +
-	"References\"\x82\x03\n" +
+	"References\x12<\n" +
+	"\aVoyages\x18+ \x03(\v2\".nexus.events.v1.BookingNoteVoyageR\aVoyages\x12H\n" +
+	"\vAttachments\x18, \x03(\v2&.nexus.events.v1.BookingNoteAttachmentR\vAttachments\x12#\n" +
+	"\rservice_level\x18- \x01(\tR\fserviceLevel\"\x82\x03\n" +
 	"\x1cBookingCreationFailedPayload\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\tR\tbookingId\x126\n" +
@@ -1997,7 +2246,7 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\rBookingSource\x12\t\n" +
 	"\x05EMAIL\x10\x00\x12\n" +
 	"\n" +
-	"\x06UPLOAD\x10\x01BIZGgithub.com/open-nexus-group/nexus-proto/gen/go/nexus/events/v1;eventsv1b\x06proto3"
+	"\x06UPLOAD\x10\x01BOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_booking_proto_rawDescOnce sync.Once
@@ -2012,7 +2261,7 @@ func file_proto_nexus_events_v1_booking_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_nexus_events_v1_booking_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_proto_nexus_events_v1_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_proto_nexus_events_v1_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_proto_nexus_events_v1_booking_proto_goTypes = []any{
 	(BookingSource)(0), // 0: nexus.events.v1.BookingSource
 	(BookingCreationFailedPayload_FailureReason)(0),   // 1: nexus.events.v1.BookingCreationFailedPayload.FailureReason
@@ -2022,46 +2271,50 @@ var file_proto_nexus_events_v1_booking_proto_goTypes = []any{
 	(*BookingNoteContainer)(nil),                      // 5: nexus.events.v1.BookingNoteContainer
 	(*BookingParticipant)(nil),                        // 6: nexus.events.v1.BookingParticipant
 	(*BookingNoteItem)(nil),                           // 7: nexus.events.v1.BookingNoteItem
-	(*BookingNote)(nil),                               // 8: nexus.events.v1.BookingNote
-	(*BookingCreationFailedPayload)(nil),              // 9: nexus.events.v1.BookingCreationFailedPayload
-	(*BookingCreatedPayload)(nil),                     // 10: nexus.events.v1.BookingCreatedPayload
-	(*BookingProcessingFailedPayload)(nil),            // 11: nexus.events.v1.BookingProcessingFailedPayload
-	(*BookingProcessedPayload)(nil),                   // 12: nexus.events.v1.BookingProcessedPayload
-	(*BookingFieldAmendedPayload)(nil),                // 13: nexus.events.v1.BookingFieldAmendedPayload
-	(*BookingUpdatedPayload)(nil),                     // 14: nexus.events.v1.BookingUpdatedPayload
-	(*BookingUpdateFailedPayload)(nil),                // 15: nexus.events.v1.BookingUpdateFailedPayload
-	(*BookingApprovedPayload)(nil),                    // 16: nexus.events.v1.BookingApprovedPayload
-	(*BookingRejectedPayload)(nil),                    // 17: nexus.events.v1.BookingRejectedPayload
-	(*BookingForwardPayload)(nil),                     // 18: nexus.events.v1.BookingForwardPayload
-	(*UserInfo)(nil),                                  // 19: nexus.events.v1.UserInfo
-	(*structpb.Value)(nil),                            // 20: google.protobuf.Value
+	(*BookingNoteVoyage)(nil),                         // 8: nexus.events.v1.BookingNoteVoyage
+	(*BookingNoteAttachment)(nil),                     // 9: nexus.events.v1.BookingNoteAttachment
+	(*BookingNote)(nil),                               // 10: nexus.events.v1.BookingNote
+	(*BookingCreationFailedPayload)(nil),              // 11: nexus.events.v1.BookingCreationFailedPayload
+	(*BookingCreatedPayload)(nil),                     // 12: nexus.events.v1.BookingCreatedPayload
+	(*BookingProcessingFailedPayload)(nil),            // 13: nexus.events.v1.BookingProcessingFailedPayload
+	(*BookingProcessedPayload)(nil),                   // 14: nexus.events.v1.BookingProcessedPayload
+	(*BookingFieldAmendedPayload)(nil),                // 15: nexus.events.v1.BookingFieldAmendedPayload
+	(*BookingUpdatedPayload)(nil),                     // 16: nexus.events.v1.BookingUpdatedPayload
+	(*BookingUpdateFailedPayload)(nil),                // 17: nexus.events.v1.BookingUpdateFailedPayload
+	(*BookingApprovedPayload)(nil),                    // 18: nexus.events.v1.BookingApprovedPayload
+	(*BookingRejectedPayload)(nil),                    // 19: nexus.events.v1.BookingRejectedPayload
+	(*BookingForwardPayload)(nil),                     // 20: nexus.events.v1.BookingForwardPayload
+	(*UserInfo)(nil),                                  // 21: nexus.events.v1.UserInfo
+	(*structpb.Value)(nil),                            // 22: google.protobuf.Value
 }
 var file_proto_nexus_events_v1_booking_proto_depIdxs = []int32{
 	7,  // 0: nexus.events.v1.BookingNote.Items:type_name -> nexus.events.v1.BookingNoteItem
 	5,  // 1: nexus.events.v1.BookingNote.Containers:type_name -> nexus.events.v1.BookingNoteContainer
 	6,  // 2: nexus.events.v1.BookingNote.Participants:type_name -> nexus.events.v1.BookingParticipant
 	4,  // 3: nexus.events.v1.BookingNote.References:type_name -> nexus.events.v1.BookingNoteReference
-	0,  // 4: nexus.events.v1.BookingCreationFailedPayload.source:type_name -> nexus.events.v1.BookingSource
-	1,  // 5: nexus.events.v1.BookingCreationFailedPayload.reason:type_name -> nexus.events.v1.BookingCreationFailedPayload.FailureReason
-	0,  // 6: nexus.events.v1.BookingCreatedPayload.source:type_name -> nexus.events.v1.BookingSource
-	0,  // 7: nexus.events.v1.BookingProcessingFailedPayload.source:type_name -> nexus.events.v1.BookingSource
-	2,  // 8: nexus.events.v1.BookingProcessingFailedPayload.reason:type_name -> nexus.events.v1.BookingProcessingFailedPayload.FailureReason
-	0,  // 9: nexus.events.v1.BookingProcessedPayload.source:type_name -> nexus.events.v1.BookingSource
-	19, // 10: nexus.events.v1.BookingFieldAmendedPayload.user:type_name -> nexus.events.v1.UserInfo
-	19, // 11: nexus.events.v1.BookingUpdatedPayload.user:type_name -> nexus.events.v1.UserInfo
-	20, // 12: nexus.events.v1.BookingUpdatedPayload.before_json:type_name -> google.protobuf.Value
-	20, // 13: nexus.events.v1.BookingUpdatedPayload.after_json:type_name -> google.protobuf.Value
-	19, // 14: nexus.events.v1.BookingUpdateFailedPayload.user:type_name -> nexus.events.v1.UserInfo
-	3,  // 15: nexus.events.v1.BookingUpdateFailedPayload.reason:type_name -> nexus.events.v1.BookingUpdateFailedPayload.FailureReason
-	19, // 16: nexus.events.v1.BookingApprovedPayload.user:type_name -> nexus.events.v1.UserInfo
-	19, // 17: nexus.events.v1.BookingRejectedPayload.user:type_name -> nexus.events.v1.UserInfo
-	8,  // 18: nexus.events.v1.BookingForwardPayload.booking_note:type_name -> nexus.events.v1.BookingNote
-	19, // 19: nexus.events.v1.BookingForwardPayload.user:type_name -> nexus.events.v1.UserInfo
-	20, // [20:20] is the sub-list for method output_type
-	20, // [20:20] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	8,  // 4: nexus.events.v1.BookingNote.Voyages:type_name -> nexus.events.v1.BookingNoteVoyage
+	9,  // 5: nexus.events.v1.BookingNote.Attachments:type_name -> nexus.events.v1.BookingNoteAttachment
+	0,  // 6: nexus.events.v1.BookingCreationFailedPayload.source:type_name -> nexus.events.v1.BookingSource
+	1,  // 7: nexus.events.v1.BookingCreationFailedPayload.reason:type_name -> nexus.events.v1.BookingCreationFailedPayload.FailureReason
+	0,  // 8: nexus.events.v1.BookingCreatedPayload.source:type_name -> nexus.events.v1.BookingSource
+	0,  // 9: nexus.events.v1.BookingProcessingFailedPayload.source:type_name -> nexus.events.v1.BookingSource
+	2,  // 10: nexus.events.v1.BookingProcessingFailedPayload.reason:type_name -> nexus.events.v1.BookingProcessingFailedPayload.FailureReason
+	0,  // 11: nexus.events.v1.BookingProcessedPayload.source:type_name -> nexus.events.v1.BookingSource
+	21, // 12: nexus.events.v1.BookingFieldAmendedPayload.user:type_name -> nexus.events.v1.UserInfo
+	21, // 13: nexus.events.v1.BookingUpdatedPayload.user:type_name -> nexus.events.v1.UserInfo
+	22, // 14: nexus.events.v1.BookingUpdatedPayload.before_json:type_name -> google.protobuf.Value
+	22, // 15: nexus.events.v1.BookingUpdatedPayload.after_json:type_name -> google.protobuf.Value
+	21, // 16: nexus.events.v1.BookingUpdateFailedPayload.user:type_name -> nexus.events.v1.UserInfo
+	3,  // 17: nexus.events.v1.BookingUpdateFailedPayload.reason:type_name -> nexus.events.v1.BookingUpdateFailedPayload.FailureReason
+	21, // 18: nexus.events.v1.BookingApprovedPayload.user:type_name -> nexus.events.v1.UserInfo
+	21, // 19: nexus.events.v1.BookingRejectedPayload.user:type_name -> nexus.events.v1.UserInfo
+	10, // 20: nexus.events.v1.BookingForwardPayload.booking_note:type_name -> nexus.events.v1.BookingNote
+	21, // 21: nexus.events.v1.BookingForwardPayload.user:type_name -> nexus.events.v1.UserInfo
+	22, // [22:22] is the sub-list for method output_type
+	22, // [22:22] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_proto_nexus_events_v1_booking_proto_init() }
@@ -2076,7 +2329,7 @@ func file_proto_nexus_events_v1_booking_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_nexus_events_v1_booking_proto_rawDesc), len(file_proto_nexus_events_v1_booking_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   15,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
