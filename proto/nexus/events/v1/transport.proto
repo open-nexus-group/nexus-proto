@@ -293,7 +293,7 @@ message SeaFile {
   repeated Participant participants = 24;
   repeated FileExternalSystemID file_external_system_id = 25;
   string incoterm = 26;
-  string earliest_sailing_date_utc = 27;
+  string latest_estimated_time_departure_utc = 27;
   string port_of_loading = 28;
   string port_of_destination = 29;
   string type = 30;

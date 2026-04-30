@@ -2427,7 +2427,7 @@ type SeaFile struct {
 	Participants                    []*Participant          `protobuf:"bytes,24,rep,name=participants,proto3" json:"participants,omitempty"`
 	FileExternalSystemId            []*FileExternalSystemID `protobuf:"bytes,25,rep,name=file_external_system_id,json=fileExternalSystemId,proto3" json:"file_external_system_id,omitempty"`
 	Incoterm                        string                  `protobuf:"bytes,26,opt,name=incoterm,proto3" json:"incoterm,omitempty"`
-	EarliestSailingDateUtc          string                  `protobuf:"bytes,27,opt,name=earliest_sailing_date_utc,json=earliestSailingDateUtc,proto3" json:"earliest_sailing_date_utc,omitempty"`
+	LatestEstimatedTimeDepartureUtc string                  `protobuf:"bytes,27,opt,name=latest_estimated_time_departure_utc,json=latestEstimatedTimeDepartureUtc,proto3" json:"latest_estimated_time_departure_utc,omitempty"`
 	PortOfLoading                   string                  `protobuf:"bytes,28,opt,name=port_of_loading,json=portOfLoading,proto3" json:"port_of_loading,omitempty"`
 	PortOfDestination               string                  `protobuf:"bytes,29,opt,name=port_of_destination,json=portOfDestination,proto3" json:"port_of_destination,omitempty"`
 	Type                            string                  `protobuf:"bytes,30,opt,name=type,proto3" json:"type,omitempty"`
@@ -2652,9 +2652,9 @@ func (x *SeaFile) GetIncoterm() string {
 	return ""
 }
 
-func (x *SeaFile) GetEarliestSailingDateUtc() string {
+func (x *SeaFile) GetLatestEstimatedTimeDepartureUtc() string {
 	if x != nil {
-		return x.EarliestSailingDateUtc
+		return x.LatestEstimatedTimeDepartureUtc
 	}
 	return ""
 }
@@ -2993,7 +2993,7 @@ const file_proto_nexus_events_v1_transport_proto_rawDesc = "" +
 	"\x0fcontainer_rates\x18\x17 \x03(\v2*.nexus.events.v1.ContainerTypeScheduleRateR\x0econtainerRates\x12F\n" +
 	"\x0etransshipments\x18\x18 \x03(\v2\x1e.nexus.events.v1.TransshipmentR\x0etransshipments\x12\x16\n" +
 	"\x06status\x18\x19 \x01(\tR\x06status\x12\x12\n" +
-	"\x04scac\x18\x1a \x01(\tR\x04scac\"\xcc\r\n" +
+	"\x04scac\x18\x1a \x01(\tR\x04scac\"\xdf\r\n" +
 	"\aSeaFile\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tparent_id\x18\x02 \x01(\tR\bparentId\x12\x19\n" +
@@ -3021,8 +3021,8 @@ const file_proto_nexus_events_v1_transport_proto_rawDesc = "" +
 	"\tdocuments\x18\x17 \x03(\v2\x19.nexus.events.v1.DocumentR\tdocuments\x12@\n" +
 	"\fparticipants\x18\x18 \x03(\v2\x1c.nexus.events.v1.ParticipantR\fparticipants\x12\\\n" +
 	"\x17file_external_system_id\x18\x19 \x03(\v2%.nexus.events.v1.FileExternalSystemIDR\x14fileExternalSystemId\x12\x1a\n" +
-	"\bincoterm\x18\x1a \x01(\tR\bincoterm\x129\n" +
-	"\x19earliest_sailing_date_utc\x18\x1b \x01(\tR\x16earliestSailingDateUtc\x12&\n" +
+	"\bincoterm\x18\x1a \x01(\tR\bincoterm\x12L\n" +
+	"#latest_estimated_time_departure_utc\x18\x1b \x01(\tR\x1flatestEstimatedTimeDepartureUtc\x12&\n" +
 	"\x0fport_of_loading\x18\x1c \x01(\tR\rportOfLoading\x12.\n" +
 	"\x13port_of_destination\x18\x1d \x01(\tR\x11portOfDestination\x12\x12\n" +
 	"\x04type\x18\x1e \x01(\tR\x04type\x128\n" +
