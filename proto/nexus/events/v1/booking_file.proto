@@ -23,4 +23,5 @@ message BookingFileCreatedPayload {
   string booking_note_id = 1;
   string booking_file_id = 2;
   string booking_file_nexus_id = 3;
+  string created_by_tenant_id = 4;
 }

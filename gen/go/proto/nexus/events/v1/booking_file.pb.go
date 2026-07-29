@@ -146,6 +146,7 @@ type BookingFileCreatedPayload struct {
 	BookingNoteId      string                 `protobuf:"bytes,1,opt,name=booking_note_id,json=bookingNoteId,proto3" json:"booking_note_id,omitempty"`
 	BookingFileId      string                 `protobuf:"bytes,2,opt,name=booking_file_id,json=bookingFileId,proto3" json:"booking_file_id,omitempty"`
 	BookingFileNexusId string                 `protobuf:"bytes,3,opt,name=booking_file_nexus_id,json=bookingFileNexusId,proto3" json:"booking_file_nexus_id,omitempty"`
+	CreatedByTenantId  string                 `protobuf:"bytes,4,opt,name=created_by_tenant_id,json=createdByTenantId,proto3" json:"created_by_tenant_id,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -201,6 +202,13 @@ func (x *BookingFileCreatedPayload) GetBookingFileNexusId() string {
 	return ""
 }
 
+func (x *BookingFileCreatedPayload) GetCreatedByTenantId() string {
+	if x != nil {
+		return x.CreatedByTenantId
+	}
+	return ""
+}
+
 var File_proto_nexus_events_v1_booking_file_proto protoreflect.FileDescriptor
 
 const file_proto_nexus_events_v1_booking_file_proto_rawDesc = "" +
@@ -214,11 +222,12 @@ const file_proto_nexus_events_v1_booking_file_proto_rawDesc = "" +
 	"\n" +
 	"is_success\x18\x02 \x01(\bR\tisSuccess\x12!\n" +
 	"\fprefill_json\x18\x03 \x01(\tR\vprefillJson\x12\x16\n" +
-	"\x06errors\x18\x04 \x03(\tR\x06errors\"\x9e\x01\n" +
+	"\x06errors\x18\x04 \x03(\tR\x06errors\"\xcf\x01\n" +
 	"\x19BookingFileCreatedPayload\x12&\n" +
 	"\x0fbooking_note_id\x18\x01 \x01(\tR\rbookingNoteId\x12&\n" +
 	"\x0fbooking_file_id\x18\x02 \x01(\tR\rbookingFileId\x121\n" +
-	"\x15booking_file_nexus_id\x18\x03 \x01(\tR\x12bookingFileNexusIdBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
+	"\x15booking_file_nexus_id\x18\x03 \x01(\tR\x12bookingFileNexusId\x12/\n" +
+	"\x14created_by_tenant_id\x18\x04 \x01(\tR\x11createdByTenantIdBOZMgithub.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1b\x06proto3"
 
 var (
 	file_proto_nexus_events_v1_booking_file_proto_rawDescOnce sync.Once
