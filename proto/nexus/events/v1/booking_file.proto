@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+
+import "proto/nexus/events/v1/booking.proto";
+import "proto/nexus/events/v1/common.proto";
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
+
+message BookingFilePrefillRequestedPayload {
+  BookingNote booking_note = 1;
+  UserInfo user = 2;
+}
+
+message BookingFilePrefillReadyPayload {
+  string booking_note_id = 1;
+  bool is_success = 2;
+  string prefill_json = 3;
+  repeated string errors = 4;
+}
+
+message BookingFileCreatedPayload {
+  string booking_note_id = 1;
+  string booking_file_id = 2;
+  string booking_file_nexus_id = 3;
+  string created_by_tenant_id = 4;
+}
