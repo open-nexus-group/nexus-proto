@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package nexus.events.v1;
 
+import "proto/nexus/events/v1/booking_file.proto";
+
 option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
 message Money {
@@ -316,4 +318,5 @@ message SeaFile {
   string house_bill_of_lading_number = 34;
   string house_bill_of_lading_number_issued_as = 35;
   repeated Task tasks = 36;
+  BookingFileCreationSource created_by_source = 37;
 }
