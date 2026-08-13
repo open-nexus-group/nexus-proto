@@ -55,6 +55,8 @@ message BookingParticipant {
   string updated_at = 15;
   string deleted_at = 16;
   string destination_tms_reference = 17;
+  string organization_id = 18;
+  string organization_tenant_id = 19;
 }
 
 message BookingNoteItem {
@@ -149,6 +151,7 @@ message BookingNote {
   repeated BookingNoteVoyage Voyages = 43;
   repeated BookingNoteAttachment Attachments = 44;
   string service_level = 45;
+  int64 portal_booking_id = 46;
 }
 
 message BookingCreationFailedPayload {

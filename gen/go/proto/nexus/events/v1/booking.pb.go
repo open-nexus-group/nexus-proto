@@ -473,6 +473,8 @@ type BookingParticipant struct {
 	UpdatedAt               string                 `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	DeletedAt               string                 `protobuf:"bytes,16,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	DestinationTmsReference string                 `protobuf:"bytes,17,opt,name=destination_tms_reference,json=destinationTmsReference,proto3" json:"destination_tms_reference,omitempty"`
+	OrganizationId          string                 `protobuf:"bytes,18,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	OrganizationTenantId    string                 `protobuf:"bytes,19,opt,name=organization_tenant_id,json=organizationTenantId,proto3" json:"organization_tenant_id,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -622,6 +624,20 @@ func (x *BookingParticipant) GetDeletedAt() string {
 func (x *BookingParticipant) GetDestinationTmsReference() string {
 	if x != nil {
 		return x.DestinationTmsReference
+	}
+	return ""
+}
+
+func (x *BookingParticipant) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *BookingParticipant) GetOrganizationTenantId() string {
+	if x != nil {
+		return x.OrganizationTenantId
 	}
 	return ""
 }
@@ -1045,6 +1061,7 @@ type BookingNote struct {
 	Voyages                      []*BookingNoteVoyage     `protobuf:"bytes,43,rep,name=Voyages,proto3" json:"Voyages,omitempty"`
 	Attachments                  []*BookingNoteAttachment `protobuf:"bytes,44,rep,name=Attachments,proto3" json:"Attachments,omitempty"`
 	ServiceLevel                 string                   `protobuf:"bytes,45,opt,name=service_level,json=serviceLevel,proto3" json:"service_level,omitempty"`
+	PortalBookingId              int64                    `protobuf:"varint,46,opt,name=portal_booking_id,json=portalBookingId,proto3" json:"portal_booking_id,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
@@ -1392,6 +1409,13 @@ func (x *BookingNote) GetServiceLevel() string {
 		return x.ServiceLevel
 	}
 	return ""
+}
+
+func (x *BookingNote) GetPortalBookingId() int64 {
+	if x != nil {
+		return x.PortalBookingId
+	}
+	return 0
 }
 
 type BookingCreationFailedPayload struct {
@@ -2047,7 +2071,7 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\x10container_number\x18\t \x01(\tR\x0fcontainerNumber\x12\x1f\n" +
 	"\vseal_number\x18\n" +
 	" \x01(\tR\n" +
-	"sealNumber\"\x8d\x04\n" +
+	"sealNumber\"\xec\x04\n" +
 	"\x12BookingParticipant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12\x12\n" +
@@ -2070,7 +2094,9 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"updated_at\x18\x0f \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
 	"deleted_at\x18\x10 \x01(\tR\tdeletedAt\x12:\n" +
-	"\x19destination_tms_reference\x18\x11 \x01(\tR\x17destinationTmsReference\"\xcb\x05\n" +
+	"\x19destination_tms_reference\x18\x11 \x01(\tR\x17destinationTmsReference\x12'\n" +
+	"\x0forganization_id\x18\x12 \x01(\tR\x0eorganizationId\x124\n" +
+	"\x16organization_tenant_id\x18\x13 \x01(\tR\x14organizationTenantId\"\xcb\x05\n" +
 	"\x0fBookingNoteItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
 	"\x0fbooking_note_id\x18\x02 \x01(\tR\rbookingNoteId\x12\x0e\n" +
@@ -2114,7 +2140,7 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12#\n" +
 	"\rdocument_type\x18\x03 \x01(\tR\fdocumentType\x12\x1b\n" +
 	"\tmime_type\x18\x04 \x01(\tR\bmimeType\x12%\n" +
-	"\x0econtent_base64\x18\x05 \x01(\tR\rcontentBase64\"\x9c\x0f\n" +
+	"\x0econtent_base64\x18\x05 \x01(\tR\rcontentBase64\"\xc8\x0f\n" +
 	"\vBookingNote\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
 	"\rdocument_type\x18\x02 \x01(\tR\fdocumentType\x12#\n" +
@@ -2171,7 +2197,8 @@ const file_proto_nexus_events_v1_booking_proto_rawDesc = "" +
 	"References\x12<\n" +
 	"\aVoyages\x18+ \x03(\v2\".nexus.events.v1.BookingNoteVoyageR\aVoyages\x12H\n" +
 	"\vAttachments\x18, \x03(\v2&.nexus.events.v1.BookingNoteAttachmentR\vAttachments\x12#\n" +
-	"\rservice_level\x18- \x01(\tR\fserviceLevel\"\x82\x03\n" +
+	"\rservice_level\x18- \x01(\tR\fserviceLevel\x12*\n" +
+	"\x11portal_booking_id\x18. \x01(\x03R\x0fportalBookingId\"\x82\x03\n" +
 	"\x1cBookingCreationFailedPayload\x12\x1d\n" +
 	"\n" +
 	"booking_id\x18\x01 \x01(\tR\tbookingId\x126\n" +
