@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+package nexus.events.v1;
+import "booking.proto";
+import "proto/nexus/events/v1/common.proto";
+import "proto/nexus/events/v1/transport.proto";
+import "proto/nexus/events/v1/booking_file.proto";
+
+option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
+
+message SeaFileCreateRequestedPayload {
+  string request_id = 1;
+  SeaFileCreate file = 2;
+  UserInfo user = 3;
+}
+
+message SeaFileCreate {
+  string planned_cargo_ready_date_utc = 1;
+  string booking_instructions = 2;
+  string place_of_receipt = 3;
+  string place_of_delivery = 4;
+  string ams_filing_date_utc = 5;
+  string origin_tms_reference = 6;
+  string destination_tms_reference = 7;
+  Incoterm incoterm = 8;
+  SeaType type = 9;
+  string port_of_loading = 10;
+  string port_of_destination = 11;
+  string latest_estimated_time_departure_utc = 12;
+  string latest_arrival_at_pod_utc = 13;
+  string isf_filing_date_utc = 14;
+  string bill_of_lading_number = 15;
+  string house_bill_of_lading_number = 16;
+  IssuedAs house_bill_of_lading_issued_as = 17;
+  repeated CreateParticipant participants = 18;
+  repeated CreateSchedule schedules = 19;
+  repeated CreateManyContainer containers = 20;
+  repeated SeaFileCreate children = 21;
+  repeated Document documents = 22;
+  BookingFileCreationSource created_by_source = 23;
+}
+
+message CreateParticipant {
+  string organization_id = 1;
+  string location_id = 2;
+  ParticipantRole role = 3;
+  string tms_ref = 4;
+  repeated string contacts = 5;
+  repeated CreateParticipantMember members = 6;
+}
+
+message CreateParticipantMember {
+  string user_id = 1;
+  ParticipantAccess access = 2;
+  ParticipantMemberRole role = 3;
+}
+
+message CreateSchedule {
+  string estimated_time_departure_utc = 1;
+  string estimated_time_arrival_utc = 2;
+  string carrier = 3;
+  TransportMode transport_mode = 4;
+  string vessel_name = 5;
+  string imo_number = 6;
+  string voyage_number = 7;
+  Money all_in_rate = 8;
+  string carrier_so_number = 9;
+  string carrier_booking_number = 10;
+  PaymentTerm payment_term = 11;
+  string contract_owner = 12;
+  string contract_number = 13;
+  string contract_id = 14;
+  string side_terms = 15;
+  string dem_det_details = 16;
+  string det_details = 17;
+  string dem_details = 18;
+  string vgm_cut_off_utc = 19;
+  string cy_cut_off_utc = 20;
+  string si_cut_off_utc = 21;
+  repeated ContainerTypeScheduleRate rates = 22;
+  repeated CreateTransshipment transshipments = 23;
+}
+
+message CreateTransshipment {
+  string port = 1;
+  string estimated_time_arrival_utc = 2;
+  string estimated_time_departure_utc = 3;
+  TransportMode transport_mode = 4;
+  string vessel_name = 5;
+  string imo_number = 6;
+  string carrier_service_name = 7;
+  string voyage_number = 8;
+}
+
+message CreateManyContainer {
+  uint32 quantity = 1;
+  ContainerTypeGroup type = 2;
+  string description = 3;
+  string commodity = 4;
+  Weights weight = 5;
+  bool is_oversized = 6;
+  Dimensions dimensions = 7;
+  string dangerous_good_id = 8;
+  string dangerous_goods_details = 9;
+}
+
+enum Incoterm {
+  INCOTERM_UNSPECIFIED = 0;
+  INCOTERM_EXW = 1;
+  INCOTERM_FCA = 2;
+  INCOTERM_CPT = 3;
+  INCOTERM_CIP = 4;
+  INCOTERM_DAP = 5;
+  INCOTERM_DPU = 6;
+  INCOTERM_DDP = 7;
+  INCOTERM_FAS = 8;
+  INCOTERM_FOB = 9;
+  INCOTERM_CFR = 10;
+  INCOTERM_CIF = 11;
+}
+
+enum SeaType {
+  SEA_TYPE_UNSPECIFIED = 0;
+  SEA_TYPE_FCL = 1;
+  SEA_TYPE_LCL = 2;
+  SEA_TYPE_FCLBC = 3;
+  SEA_TYPE_FCLC = 4;
+  SEA_TYPE_FCLSC = 5;
+  SEA_TYPE_LCLBC = 6;
+  SEA_TYPE_LCLC = 7;
+  SEA_TYPE_LCLCO = 8;
+}
+
+enum IssuedAs {
+  ISSUED_AS_UNSPECIFIED = 0;
+  ISSUED_AS_TELEX = 1;
+  ISSUED_AS_ORIGINAL = 2;
+  ISSUED_AS_OTHER = 3;
+}
+
+enum ParticipantRole {
+  PARTICIPANT_ROLE_UNSPECIFIED = 0;
+  PARTICIPANT_ROLE_CONSIGNEE = 1;
+  PARTICIPANT_ROLE_SHIPPER = 2;
+  PARTICIPANT_ROLE_ORIGIN_AGENT = 3;
+  PARTICIPANT_ROLE_DESTINATION_AGENT = 4;
+}
+
+enum ParticipantAccess {
+  PARTICIPANT_ACCESS_UNSPECIFIED = 0;
+  PARTICIPANT_ACCESS_READ_FILE = 1;
+  PARTICIPANT_ACCESS_WRITE_FILE = 2;
+  PARTICIPANT_ACCESS_OWNER = 3;
+}
+
+enum ParticipantMemberRole {
+  PARTICIPANT_MEMBER_ROLE_UNSPECIFIED = 0;
+  PARTICIPANT_MEMBER_ROLE_INFORMED = 1;
+  PARTICIPANT_MEMBER_ROLE_RESPONSIBLE = 2;
+}
+
+enum TransportMode {
+  TRANSPORT_MODE_UNSPECIFIED = 0;
+  TRANSPORT_MODE_VESSEL_FEEDER = 1;
+  TRANSPORT_MODE_VESSEL = 2;
+  TRANSPORT_MODE_BARGE = 3;
+  TRANSPORT_MODE_RAIL = 4;
+  TRANSPORT_MODE_TRUCK = 5;
+  TRANSPORT_MODE_INTERMODAL = 6;
+}
+
+enum PaymentTerm {
+  PAYMENT_TERM_UNSPECIFIED = 0;
+  PAYMENT_TERM_PREPAID = 1;
+  PAYMENT_TERM_COLLECT = 2;
+}
+
+enum ContainerTypeGroup {
+  CONTAINER_TYPE_GROUP_UNSPECIFIED = 0;
+  CONTAINER_TYPE_GROUP_45G0 = 1;
+  CONTAINER_TYPE_GROUP_42G0 = 2;
+  CONTAINER_TYPE_GROUP_22G0 = 3;
+  CONTAINER_TYPE_GROUP_45R1 = 4;
+  CONTAINER_TYPE_GROUP_42R1 = 5;
+  CONTAINER_TYPE_GROUP_22R1 = 6;
+  CONTAINER_TYPE_GROUP_45U1 = 7;
+  CONTAINER_TYPE_GROUP_42U1 = 8;
+  CONTAINER_TYPE_GROUP_22U1 = 9;
+  CONTAINER_TYPE_GROUP_45P3 = 10;
+  CONTAINER_TYPE_GROUP_42P3 = 11;
+  CONTAINER_TYPE_GROUP_22P3 = 12;
+  CONTAINER_TYPE_GROUP_22T2 = 13;
+  CONTAINER_TYPE_GROUP_42T2 = 14;
+  CONTAINER_TYPE_GROUP_20T5 = 15;
+  CONTAINER_TYPE_GROUP_22T0 = 16;
+  CONTAINER_TYPE_GROUP_22T6 = 17;
+  CONTAINER_TYPE_GROUP_22G1 = 18;
+  CONTAINER_TYPE_GROUP_22V0 = 19;
+  CONTAINER_TYPE_GROUP_22U6 = 20;
+  CONTAINER_TYPE_GROUP_22P1 = 21;
+  CONTAINER_TYPE_GROUP_22P8 = 22;
+  CONTAINER_TYPE_GROUP_22R9 = 23;
+  CONTAINER_TYPE_GROUP_20P1 = 24;
+  CONTAINER_TYPE_GROUP_42U6 = 25;
+  CONTAINER_TYPE_GROUP_42P1 = 26;
+  CONTAINER_TYPE_GROUP_42P8 = 27;
+  CONTAINER_TYPE_GROUP_42R9 = 28;
+  CONTAINER_TYPE_GROUP_42G1 = 29;
+  CONTAINER_TYPE_GROUP_45P8 = 30;
+  CONTAINER_TYPE_GROUP_45U6 = 31;
+  CONTAINER_TYPE_GROUP_45R9 = 32;
+  CONTAINER_TYPE_GROUP_45G1 = 33;
+}
