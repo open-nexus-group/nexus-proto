@@ -3,25 +3,50 @@ syntax = "proto3";
 package nexus.events.v1;
 
 import "proto/nexus/events/v1/booking.proto";
-import "proto/nexus/events/v1/common.proto";
+import "google/protobuf/struct.proto";
 
 option go_package = "github.com/open-nexus-group/nexus-proto/gen/go/proto/nexus/events/v1;eventsv1";
 
-message BookingFilePrefillRequestedPayload {
+message BookingFileCreationSource {
+  string source_type = 1;
+  string id = 2;
+  string human_readable_id = 3;
+  google.protobuf.Struct metadata = 4;
+}
+
+message BookingFileCreationRequestedPayload {
+  BookingFileCreationSource source = 1;
+  string request_id = 2;
+  BookingFileCreationSourceData source_data = 3;
+}
+
+message BookingFileCreationSourceData {
+  oneof data {
+    GatewayBookingNoteSourceData gateway_booking_note = 1;
+  }
+}
+
+message GatewayBookingNoteSourceData {
   BookingNote booking_note = 1;
-  UserInfo user = 2;
+  DestinationAgentInput destination_agent = 2;
 }
 
-message BookingFilePrefillReadyPayload {
-  string booking_note_id = 1;
-  bool is_success = 2;
-  string prefill_json = 3;
-  repeated string errors = 4;
+message DestinationAgentInput {
+  string organization_id = 1;
+  string location_id = 2;
+  string responsible_user_id = 3;
 }
 
-message BookingFileCreatedPayload {
-  string booking_note_id = 1;
-  string booking_file_id = 2;
-  string booking_file_nexus_id = 3;
-  string created_by_tenant_id = 4;
+message BookingFileCreationSucceededPayload {
+  BookingFileCreationSource source = 1;
+  string request_id = 2;
+  string booking_file_id = 3;
+  string booking_file_nexus_id = 4;
+  string created_by_tenant_id = 5;
+}
+
+message BookingFileCreationFailedPayload {
+  BookingFileCreationSource source = 1;
+  string request_id = 2;
+  repeated string errors = 3;
 }
