@@ -36,6 +36,27 @@ message PackageData {
   map<string, string> custom_fields = 2;
   string label_id = 3;
   repeated string markings = 4;
+  int64 quantity = 5;
+  double cbm = 6;
+}
+
+message PalletData {
+  string type = 1;
+  string material = 2;
+  bool ispm15 = 3;
+  string sscc = 4;
+  int64 quantity = 5;
+  double cbm = 6;
+}
+
+message ItemData {
+  string sku = 1;
+  string name = 2;
+  string description = 3;
+  string hs_code = 4;
+  string country_of_origin = 5;
+  int64 quantity = 6;
+  double cbm = 7;
 }
 
 message RailWagonData {
@@ -215,6 +236,8 @@ message CargoUnit {
     PackageData package = 12;
     ContainerData container = 13;
     RailWagonData rail_wagon = 14;
+    PalletData pallet = 20;
+    ItemData item = 21;
   }
 
   Weights weights = 15;
